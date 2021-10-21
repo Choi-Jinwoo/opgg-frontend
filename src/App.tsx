@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/GlobalStyles';
 import theme from './styles/theme';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
