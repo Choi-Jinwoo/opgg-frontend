@@ -26,5 +26,8 @@ module.exports = {
     clean: true,
     publicPath: '/',
   },
-  plugins: [new ForkTsCheckerWebpackPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
+  ],
 };
