@@ -13,7 +13,7 @@ const Text: React.FC<Props> = ({
   children,
   color = theme.colors.black,
   fontSize = theme.fontSizes.regular,
-  fontWeight = 'bold',
+  fontWeight = 'normal',
 }) => {
   return (
     <Span color={color} fontSize={fontSize} fontWeight={fontWeight}>
