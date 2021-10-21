@@ -9,20 +9,20 @@ type Props = {
   fontWeight?: FontWeight;
 };
 
-const Text: React.FC<Props> = ({
+const Heading: React.FC<Props> = ({
   children,
   color = theme.colors.black,
-  fontSize = theme.fontSizes.regular,
-  fontWeight = 'normal',
+  fontSize = theme.fontSizes.large,
+  fontWeight = 'bold',
 }) => {
   return (
-    <Span color={color} fontSize={fontSize} fontWeight={fontWeight}>
+    <StyledHeading color={color} fontSize={fontSize} fontWeight={fontWeight}>
       {children}
-    </Span>
+    </StyledHeading>
   );
 };
 
-const Span = styled.span<{
+const StyledHeading = styled.h1<{
   color: string;
   fontSize: string;
   fontWeight: string;
@@ -32,4 +32,4 @@ const Span = styled.span<{
   font-weight: ${(props) => props.fontWeight};
 `;
 
-export default Text;
+export default Heading;
