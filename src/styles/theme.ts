@@ -29,3 +29,7 @@ const theme = {
     desktop: '1000px',
   },
 };
+
+export default theme;
+
+export type CustomTheme = typeof theme;
