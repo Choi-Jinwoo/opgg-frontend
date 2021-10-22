@@ -1,19 +1,36 @@
+import DropDown from '@src/components/DropDown';
+import useDropDown from '@src/hooks/useDropDown';
 import React from 'react';
 import styled from 'styled-components';
+import RecentSearchList from './RecentSearchList';
 import SearchButton from './SearchButton';
 
 const SEARCH_PLACEHOLDER = '소환사명, 챔피언···';
+const SEARCH_BAR_ID = 'header-search-bar';
 
 const SearchBar: React.FC = () => {
+  const [isDropDownVisible, makeDropDownVisible] = useDropDown(
+    false,
+    `#${SEARCH_BAR_ID}`,
+  );
+
+  const onSearchInputFocus = () => {
+    makeDropDownVisible();
+  };
+
   return (
-    <Container>
-      <SearchInput />
+    <Container id={SEARCH_BAR_ID}>
+      <SearchInput onFocus={onSearchInputFocus} />
       <SearchButton />
+      <DropDown isVisible={isDropDownVisible} top={36}>
+        <RecentSearchList />
+      </DropDown>
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.theme.colors.white};
