@@ -1,4 +1,4 @@
-class TierRankAttributes {
+export class TierRankAttributes {
   division!: string;
   imageUrl!: string;
   lp!: number;

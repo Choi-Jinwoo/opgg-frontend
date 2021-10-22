@@ -1,6 +1,6 @@
 import TierRank from './tierRank';
 
-class SummonerAttributes {
+export class SummonerAttributes {
   name!: string;
   level!: number;
   previousTiers!: TierRank[];
