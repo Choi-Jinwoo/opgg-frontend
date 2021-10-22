@@ -6,8 +6,8 @@ type UseInputReturns = [
   () => void,
 ];
 
-const useInput = (): UseInputReturns => {
-  const [value, setValue] = useState('');
+const useInput = (defaultValue = ''): UseInputReturns => {
+  const [value, setValue] = useState(defaultValue);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
