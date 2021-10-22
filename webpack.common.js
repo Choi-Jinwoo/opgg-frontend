@@ -8,7 +8,6 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       '@src': path.resolve(__dirname, './src'),
-      '@assets': path.resolve(__dirname, './assets'),
     },
   },
   module: {

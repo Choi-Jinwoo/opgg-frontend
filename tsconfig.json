@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
-      "@assets/*": ["assets/*"]
+      "@src/*": ["src/*"]
     },
     "jsx": "react",
     "target": "es5",
