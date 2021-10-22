@@ -13,7 +13,7 @@ const RoundImage: React.FC<Props> = ({ src, alt, width = 46 }) => {
 };
 
 const Image = styled.img`
-  width: ${(props) => props.width};
+  width: ${(props) => props.width}px;
   border-radius: 50%;
 `;
 
