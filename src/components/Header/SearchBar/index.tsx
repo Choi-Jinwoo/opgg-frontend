@@ -17,9 +17,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: ${(props) => props.theme.colors.white};
-  padding: 8px 16px;
   width: 260px;
   border-radius: 2px;
+  padding-right: 16px;
 `;
 
 const SearchInput = styled.input.attrs({
@@ -31,6 +31,8 @@ const SearchInput = styled.input.attrs({
   outline: none;
   font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.colors.gray7};
+  padding: 8px 16px;
+  border-radius: 2px;
 
   &::placeholder {
     color: ${(props) => props.theme.colors.gray4};
