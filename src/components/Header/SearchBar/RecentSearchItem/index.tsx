@@ -6,9 +6,11 @@ import Text from '@src/components/Text';
 const RecentSearchItem: React.FC = () => {
   return (
     <Container>
-      <Text color={theme.colors.gray7} fontSize={theme.fontSizes.small}>
-        실버판테온
-      </Text>
+      <RecentSearchContent>
+        <Text color={theme.colors.gray7} fontSize={theme.fontSizes.small}>
+          실버판테온
+        </Text>
+      </RecentSearchContent>
 
       <IconsWrapper>
         <span>O</span>
@@ -23,6 +25,10 @@ const Container = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 8px 24px;
+`;
+
+const RecentSearchContent = styled.div`
+  cursor: pointer;
 `;
 
 const IconsWrapper = styled.div`
