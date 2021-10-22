@@ -1,5 +1,7 @@
 import DropDown from '@src/components/DropDown';
 import useDropDown from '@src/hooks/useDropDown';
+import useInput from '@src/hooks/useInput';
+import recentSearchStore from '@src/stores/recentSearchStore';
 import React from 'react';
 import styled from 'styled-components';
 import RecentSearchList from './RecentSearchList';
@@ -9,6 +11,7 @@ const SEARCH_PLACEHOLDER = '소환사명, 챔피언···';
 const SEARCH_BAR_ID = 'header-search-bar';
 
 const SearchBar: React.FC = () => {
+  const [keyword, onKeywordChange] = useInput();
   const [isDropDownVisible, makeDropDownVisible] = useDropDown(
     false,
     `#${SEARCH_BAR_ID}`,
@@ -18,10 +21,18 @@ const SearchBar: React.FC = () => {
     makeDropDownVisible();
   };
 
+  const onSearchClick = () => {
+    recentSearchStore.add(keyword);
+  };
+
   return (
     <Container id={SEARCH_BAR_ID}>
-      <SearchInput onFocus={onSearchInputFocus} />
-      <SearchButton />
+      <SearchInput
+        onFocus={onSearchInputFocus}
+        value={keyword}
+        onChange={onKeywordChange}
+      />
+      <SearchButton onClick={onSearchClick} />
       <DropDown isVisible={isDropDownVisible} top={36}>
         <RecentSearchList />
       </DropDown>

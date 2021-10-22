@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import SEARCH_ICON from '@src/assets/icons/search-icon.svg';
 
-const SearchButton: React.FC = () => {
+type Props = {
+  onClick: MouseEventHandler;
+};
+
+const SearchButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <ButtonImage src={SEARCH_ICON} />
     </Button>
   );
