@@ -1,21 +1,18 @@
-import recentSearchStorage from '@src/storage/recentSearchStorage';
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import RecentSearchItem from '../RecentSearchItem';
+import recentSearchStore from '@src/stores/recentSearchStore';
+import { observer } from 'mobx-react';
 
 const RecentSearchList: React.FC = () => {
-  // MobX를 통한 상태관리
-  const recentSearchKeywords = useMemo(
-    () => recentSearchStorage.read() ?? [],
-    [],
-  );
+  const { searchKeywords } = recentSearchStore;
 
-  if (recentSearchKeywords.length <= 0) {
+  if (searchKeywords.length <= 0) {
     return <NoRecentSearch>최근 검색한 소환사가 없습니다</NoRecentSearch>;
   }
 
-  const recentSearchItems = recentSearchKeywords.map(() => (
-    <RecentSearchItem key={0} />
+  const recentSearchItems = searchKeywords.map((keyword) => (
+    <RecentSearchItem keyword={keyword} key={keyword} />
   ));
 
   return <Container>{recentSearchItems}</Container>;
@@ -37,4 +34,4 @@ const NoRecentSearch = styled.div`
   justify-content: center;
 `;
 
-export default RecentSearchList;
+export default observer(RecentSearchList);

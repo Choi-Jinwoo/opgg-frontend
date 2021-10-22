@@ -3,12 +3,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from '@src/components/Text';
 
-const RecentSearchItem: React.FC = () => {
+type Props = {
+  keyword: string;
+};
+
+const RecentSearchItem: React.FC<Props> = ({ keyword }) => {
   return (
     <Container>
       <RecentSearchContent>
         <Text color={theme.colors.gray7} fontSize={theme.fontSizes.small}>
-          실버판테온
+          {keyword}
         </Text>
       </RecentSearchContent>
 
