@@ -1,5 +1,6 @@
 const theme = {
   colors: {
+    gold: '#eabd56',
     amethyst: '#8c51c5',
     azure: '#1ea1f7',
     blue: '#1f8ecd',
