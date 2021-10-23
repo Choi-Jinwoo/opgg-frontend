@@ -15,16 +15,8 @@ const SummaryChart: React.FC = () => {
     return <div>없음</div>;
   }
 
-  const {
-    wins,
-    losses,
-    winningRate,
-    totalMatches,
-    kills,
-    deaths,
-    assists,
-    kda,
-  } = matchStore.summonerMatchSummary;
+  const { wins, losses, winningRate, totalGames, kills, deaths, assists, kda } =
+    matchStore.summonerMatchSummary;
 
   return (
     <Container>
@@ -33,7 +25,7 @@ const SummaryChart: React.FC = () => {
           fontSize={theme.fontSizes.medium}
           color={theme.colors.gray7}
           marginBottom={8}
-        >{`${totalMatches}전 ${wins}승 ${losses}패`}</Text>
+        >{`${totalGames}전 ${wins}승 ${losses}패`}</Text>
         <PieChart
           size={100}
           title={`${winningRate}%`}

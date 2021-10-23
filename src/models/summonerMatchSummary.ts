@@ -29,19 +29,7 @@ export default class SummonerMatchSummary extends SummonerMatchSummaryAttributes
     return ((this.wins / (this.wins + this.losses)) * 100).toFixed(0);
   }
 
-  get totalMatches(): number {
+  get totalGames(): number {
     return this.wins + this.losses;
-  }
-
-  get killAvg(): string {
-    return (this.kills / this.totalMatches).toFixed(1);
-  }
-
-  get deathAvg(): string {
-    return (this.deaths / this.totalMatches).toFixed(1);
-  }
-
-  get assistAvg(): string {
-    return (this.assists / this.totalMatches).toFixed(1);
   }
 }

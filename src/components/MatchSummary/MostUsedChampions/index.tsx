@@ -15,7 +15,7 @@ const MostUsedChampions: React.FC = () => {
   }
 
   const mostUsedChampionItems = mostChampions.map((champion) => (
-    <MostUsedChampionItem key={champion.key} champion={champion} />
+    <MostUsedChampionItem key={champion.id} champion={champion} />
   ));
 
   const NoChampionDataItems = new Array(
