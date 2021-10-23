@@ -2,7 +2,7 @@ import Summoner from '@src/models/summoner';
 import summonerStore from '@src/stores/summonerStore';
 import { useEffect } from 'react';
 
-const useSummoner = (): Summoner | null => {
+const useSummonerProfile = (): Summoner | null => {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const summonerName = query.get('summoner');
@@ -16,4 +16,4 @@ const useSummoner = (): Summoner | null => {
   return summonerStore.summoner;
 };
 
-export default useSummoner;
+export default useSummonerProfile;
