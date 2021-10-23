@@ -4,6 +4,7 @@ const theme = {
     amethyst: '#8c51c5',
     azure: '#1ea1f7',
     blue: '#1f8ecd',
+    lightRed: '#ee5a52',
     red: '#c6443e',
     orange: '#e19205',
     green: '#2daf7f',
