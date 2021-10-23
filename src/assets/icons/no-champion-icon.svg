@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>F2BD8973-C0CD-4023-A7EE-F7CB0750A347</title>
+    <defs>
+        <circle id="path-1" cx="17" cy="17" r="17"></circle>
+        <polygon id="path-3" points="16.5565995 22.8437 0 22.8437 0 0 16.5565995 3.55271368e-15"></polygon>
+    </defs>
+    <g id="2_4_Summoner_NewTier_2018FS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Summoner_Detail_fronttest" transform="translate(-782.000000, -427.000000)">
+            <g id="recent-20---most-3-champions_2" transform="translate(489.000000, 283.000000)">
+                <g id="most-3-champions" transform="translate(293.000000, 52.000000)">
+                    <g id="champion-img-copy" transform="translate(0.000000, 92.000000)">
+                        <g id="Group" transform="translate(0.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#D7D7D7" xlink:href="#path-1"></use>
+                            <g id="Page-1" mask="url(#mask-2)">
+                                <g transform="translate(9.000000, 6.000000)">
+                                    <mask id="mask-4" fill="white">
+                                        <use xlink:href="#path-3"></use>
+                                    </mask>
+                                    <g id="Clip-2" stroke="none" fill="none"></g>
+                                    <path d="M15.8232,13.622 C13.2022,13.518 16.3472,7.126 14.8792,3.877 C13.4122,0.629 8.2782,0 8.2782,0 C8.2782,0 3.1442,0.629 1.6772,3.877 C0.2092,7.126 3.3542,13.518 0.7332,13.622 C-1.8868,13.727 3.0372,21.376 7.2292,22.844 L7.2292,18.337 C7.2292,18.337 6.3882,18.548 5.7602,15.613 C5.2782,13.358 5.0292,10.478 5.0292,10.478 C5.0292,10.478 3.7722,9.641 3.8782,7.439 C3.9812,5.24 7.2292,8.069 7.2292,9.955 L7.2292,14.741 L8.2782,14.741 L9.3272,14.741 L9.3272,9.955 C9.3272,8.069 12.5752,5.24 12.6782,7.439 C12.7842,9.641 11.5272,10.478 11.5272,10.478 C11.5272,10.478 11.2772,13.358 10.7962,15.613 C10.1682,18.548 9.3272,18.337 9.3272,18.337 L9.3272,22.844 C13.5182,21.376 18.4432,13.727 15.8232,13.622" id="Fill-1" stroke="none" fill="#999999" fill-rule="evenodd" mask="url(#mask-4)"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
