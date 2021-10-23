@@ -33,7 +33,7 @@ class Champion extends ChampionAttributes {
     return ((this.wins / this.games) * 100).toFixed(0);
   }
 
-  getKDA(): string {
+  get kda(): string {
     return (this.kills + this.assists / this.deaths).toFixed(2);
   }
 }
