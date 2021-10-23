@@ -28,6 +28,10 @@ class TierRank extends TierRankAttributes {
   static from(tierRank: TierRankAttributes): TierRank {
     return new TierRank(tierRank);
   }
+
+  get seasonString(): string {
+    return `S${this.season}`;
+  }
 }
 
 export default TierRank;
