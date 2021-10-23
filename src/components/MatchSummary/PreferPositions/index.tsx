@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { observer } from 'mobx-react';
-import matchStore from '@src/stores/matchStore';
 import styled from 'styled-components';
+import matchStore from '@src/stores/matchStore';
+import Text from '@src/components/Text';
+import theme from '@src/styles/theme';
 import PreferPositionItem from './PreferPositionItem';
 
 const PreferPositions: React.FC = () => {
@@ -27,6 +29,14 @@ const PreferPositions: React.FC = () => {
 
   return (
     <Container>
+      <Text
+        fontSize={theme.fontSizes.medium}
+        color={theme.colors.gray7}
+        marginBottom={20}
+      >
+        선호 포지션 (랭크)
+      </Text>
+
       <PositionList>{preferPositionItems}</PositionList>
     </Container>
   );

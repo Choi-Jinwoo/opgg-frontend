@@ -48,6 +48,7 @@ const Span = styled.span<{
   marginTop?: number;
   marginBottom?: number;
 }>`
+  display: inline-block;
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};

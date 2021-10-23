@@ -32,8 +32,6 @@ const MostUsedChampions: React.FC = () => {
   );
 };
 
-const Container = styled.ul`
-  padding: 20px;
-`;
+const Container = styled.ul``;
 
 export default observer(MostUsedChampions);

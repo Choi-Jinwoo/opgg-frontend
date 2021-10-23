@@ -73,6 +73,7 @@ const PreferPositionItem: React.FC<Props> = ({ position, rate }) => {
 const Container = styled.li`
   display: flex;
   align-items: center;
+  margin: 8px 0px;
 `;
 
 const PositionImage = styled.img`
@@ -81,7 +82,7 @@ const PositionImage = styled.img`
 `;
 
 const PositionInfoWrapper = styled.div`
-  margin-left: 4px;
+  margin-left: 12px;
 `;
 
 const RateWrapper = styled.div``;

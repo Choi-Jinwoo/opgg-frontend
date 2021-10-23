@@ -24,7 +24,7 @@ const SummaryChart: React.FC = () => {
         <Text
           fontSize={theme.fontSizes.medium}
           color={theme.colors.gray7}
-          marginBottom={8}
+          marginBottom={20}
         >{`${totalGames}전 ${wins}승 ${losses}패`}</Text>
         <PieChart
           size={100}
