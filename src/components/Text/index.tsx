@@ -16,9 +16,9 @@ type Props = {
 
 const Text: React.FC<Props> = ({
   children,
-  color = theme.colors.black,
+  color = '',
   fontSize = theme.fontSizes.regular,
-  fontWeight = 'normal',
+  fontWeight = '',
   marginLeft = 0,
   marginRight = 0,
   marginTop = 0,
