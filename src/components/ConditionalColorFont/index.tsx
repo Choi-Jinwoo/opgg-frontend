@@ -3,16 +3,16 @@ import ConditionalColor from '@src/lib/conditionalColor/conditionalColor';
 import styled from 'styled-components';
 
 type Props = {
-  conditionalColor: ConditionalColor;
+  condition: ConditionalColor;
   value: unknown;
 };
 
 const ConditionalColorFont: React.FC<Props> = ({
   children,
-  conditionalColor,
+  condition,
   value,
 }) => {
-  const color = conditionalColor.pick(value);
+  const color = condition.pick(value);
 
   return <Container color={color}>{children}</Container>;
 };
