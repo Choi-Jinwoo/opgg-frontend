@@ -1,10 +1,14 @@
 import Champion from '@src/models/champion';
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
 import matchRepository from '@src/repository/match';
+import SummonerMatchSummary from '@src/models/summonerMatchSummary';
 
 class MatchStore {
   @observable
   mostChampions: Champion[] | null = null;
+
+  @observable
+  summonerMatchSummary: SummonerMatchSummary | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,6 +20,7 @@ class MatchStore {
 
     runInAction(() => {
       this.mostChampions = data.champions.map(Champion.from);
+      this.summonerMatchSummary = SummonerMatchSummary.from(data.summary);
     });
   }
 }
