@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Text from '@src/components/Text';
+import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
-import RoundImage from '@src/components/RoundImage';
+import RoundImage from '@src/components/common/RoundImage';
 import NO_CHAMPION_ICON from '@src/assets/icons/no-champion-icon.svg';
 
 const NO_CHAMPION_TEXT = '챔피언 정보가 없습니다';

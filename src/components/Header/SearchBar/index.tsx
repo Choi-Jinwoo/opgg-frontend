@@ -1,4 +1,4 @@
-import DropDown from '@src/components/DropDown';
+import DropDown from '@src/components/common/DropDown';
 import useDropDown from '@src/hooks/useDropDown';
 import useInput from '@src/hooks/useInput';
 import recentSearchStore from '@src/stores/recentSearchStore';

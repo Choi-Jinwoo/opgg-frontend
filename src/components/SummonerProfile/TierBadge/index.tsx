@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TierRank from '@src/models/tierRank';
-import Text from '@src/components/Text';
+import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
 
 type Props = {

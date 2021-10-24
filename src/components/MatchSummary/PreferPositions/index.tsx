@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import matchStore from '@src/stores/matchStore';
-import Text from '@src/components/Text';
+import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
 import PreferPositionItem from './PreferPositionItem';
 

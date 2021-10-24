@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import RoundImage from '@src/components/RoundImage';
+import RoundImage from '@src/components/common/RoundImage';
 import Champion from '@src/models/champion';
-import Text from '@src/components/Text';
+import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
-import ConditionalColorFont from '@src/components/ConditionalColorFont';
+import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
 import winningRateColorCondition from '@src/lib/conditionalColor/WinningRateColorCondition';
 import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
 

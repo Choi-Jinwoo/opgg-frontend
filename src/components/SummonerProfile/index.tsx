@@ -1,12 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styled from 'styled-components';
-import Heading from '../Heading';
-import Text from '../Text';
+import Text from '../common/Text';
 import PreviousTiers from './PreviousTier';
 import SummonerImage from './SummonerImage';
 import theme from '@src/styles/theme';
 import summonerStore from '@src/stores/summonerStore';
+import Heading from '../common/Heading';
 
 const SummonerProfile: React.FC = () => {
   const { summoner } = summonerStore;

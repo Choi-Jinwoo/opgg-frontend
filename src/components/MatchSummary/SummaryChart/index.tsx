@@ -1,12 +1,12 @@
 import React from 'react';
-import PieChart from '@src/components/PieChart';
+import PieChart from '@src/components/common/PieChart';
 import theme from '@src/styles/theme';
 import styled from 'styled-components';
-import Text from '@src/components/Text';
+import Text from '@src/components/common/Text';
 import matchStore from '@src/stores/matchStore';
 import { observer } from 'mobx-react';
-import Emphasize from '@src/components/Emphasize';
-import ConditionalColorFont from '@src/components/ConditionalColorFont';
+import Emphasize from '@src/components/common/Emphasize';
+import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
 import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
 
 const SummaryChart: React.FC = () => {
