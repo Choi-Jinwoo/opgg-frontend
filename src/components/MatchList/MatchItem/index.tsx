@@ -163,6 +163,7 @@ type ContainerProps = {
 };
 
 const Container = styled.li<ContainerProps>`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   padding: 8px 12px;

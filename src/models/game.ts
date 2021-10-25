@@ -43,10 +43,11 @@ export type GameTeam = {
   players: GamePlayer[];
 };
 
-enum GameTypes {
+export enum GameTypes {
   SOLO_RANK = '솔랭',
   GENERAL = '일반',
-  FREE_RANK = '자유랭크',
+  FREE_RANK = '자유 5:5 랭크',
+  RANDOM = '무작위 총력전',
 }
 
 export class GameAttributes {

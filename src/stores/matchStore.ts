@@ -5,7 +5,12 @@ import SummonerMatchSummary from '@src/models/summonerMatchSummary';
 import SummonerPosition from '@src/models/summonerPosition';
 import Game from '@src/models/game';
 
+export type FilterTypes = 'all' | 'solo' | 'free';
+
 class MatchStore {
+  @observable
+  filterType: FilterTypes = 'all';
+
   @observable
   mostChampions: Champion[] | null = null;
 
@@ -32,6 +37,10 @@ class MatchStore {
       this.summonerPositions = data.positions.map(SummonerPosition.from);
       this.games = data.games.map(Game.from);
     });
+  }
+
+  selectFilter(type: FilterTypes) {
+    this.filterType = type;
   }
 }
 
