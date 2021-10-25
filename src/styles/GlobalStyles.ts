@@ -11,6 +11,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${(props) => props.theme.fontSizes.regular};
     background-color: ${(props) => props.theme.colors.gray2};
   }
+
+  ul, ol {
+    list-style: none;
+  }
 `;
 
 export default GlobalStyles;

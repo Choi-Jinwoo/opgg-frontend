@@ -231,7 +231,6 @@ const MatchItem: React.FC = () => {
 };
 
 const Container = styled.li`
-  list-style: none;
   display: flex;
 `;
 
