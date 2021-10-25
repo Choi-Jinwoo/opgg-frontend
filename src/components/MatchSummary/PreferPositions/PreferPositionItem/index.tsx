@@ -3,11 +3,11 @@ import Text from '@src/components/common/Text';
 import styled from 'styled-components';
 import theme from '@src/styles/theme';
 import Emphasize from '@src/components/common/Emphasize';
-import TOP from '@src/assets/icons/top.svg';
-import JNG from '@src/assets/icons/jng.svg';
-import MID from '@src/assets/icons/mid.svg';
-import ADC from '@src/assets/icons/adc.svg';
-import SUP from '@src/assets/icons/sup.svg';
+import TOP from '@src/assets/icons/top-icon.svg';
+import JNG from '@src/assets/icons/jng-icon.svg';
+import MID from '@src/assets/icons/mid-icon.svg';
+import ADC from '@src/assets/icons/adc-icon.svg';
+import SUP from '@src/assets/icons/sup-icon.svg';
 import SummonerPosition, { Positions } from '@src/models/summonerPosition';
 
 const POSITION_META = {
