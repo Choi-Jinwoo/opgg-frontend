@@ -14,7 +14,8 @@ const RoundSquareImage: React.FC<Props> = ({ src, alt, width, height }) => {
 
 const Image = styled.img`
   width: ${(props) => props.width}px;
-  border-radius: 50%;
+  height: ${(props) => props.height}px;
+  border-radius: 2px;
 `;
 
 export default RoundSquareImage;

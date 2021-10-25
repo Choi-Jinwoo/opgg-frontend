@@ -1,13 +1,13 @@
-type Champion = {
+export type GameChampion = {
   imageUrl: string;
   level: number;
 };
 
-type Spell = {
+export type GameSpell = {
   imageUrl: string;
 };
 
-type Item = {
+export type GameItem = {
   imageUrl: string;
 };
 
@@ -37,9 +37,9 @@ enum GameTypes {
 }
 
 export class GameAttributes {
-  champion!: Champion;
-  spells!: Spell[];
-  items!: Item[];
+  champion!: GameChampion;
+  spells!: GameSpell[];
+  items!: GameItem[];
   gameId!: number;
   createDate!: number;
   gameLength!: number;
