@@ -51,8 +51,8 @@ const PieChart: React.FC<Props> = ({
         center.x,
         center.y,
         radius,
-        toRadian(startAngle),
-        toRadian(startAngle + 360 * rate),
+        toRadian(startAngle - 90),
+        toRadian(startAngle + 360 * rate - 90),
       );
       startAngle += 360 * rate;
       ctx.fillStyle = color;
