@@ -36,7 +36,18 @@ const ITEM_THEME = {
 const MatchItem: React.FC<Props> = ({ game }) => {
   const [teams] = useGameTeams(game.gameId);
 
-  const { gameType, isWin, champion, spells, items, peak, kda, stats } = game;
+  const {
+    gameType,
+    isWin,
+    champion,
+    spells,
+    items,
+    peak,
+    kda,
+    stats,
+    relativeTime,
+    formattedGameLength,
+  } = game;
   const { kill, assist, death, cs, csPerMin, contributionForKillRate } =
     stats.general;
   const { visionWardsBought } = stats.ward;
@@ -54,7 +65,7 @@ const MatchItem: React.FC<Props> = ({ game }) => {
           {gameType}
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray8}>
-          하루전
+          {relativeTime}
         </Text>
         <Text
           fontSize={theme.fontSizes.tiny}
@@ -65,7 +76,7 @@ const MatchItem: React.FC<Props> = ({ game }) => {
           {itemTheme.label}
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray8}>
-          15분 53초
+          {formattedGameLength}
         </Text>
       </MatchInfo>
 

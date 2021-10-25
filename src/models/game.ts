@@ -1,3 +1,5 @@
+import Time from '@src/utils/time';
+
 export type GameChampion = {
   imageUrl: string;
   level: number;
@@ -86,6 +88,14 @@ class Game extends GameAttributes {
     if (death === 0) return 'Perfect';
 
     return ((kill + assist) / death).toFixed(2);
+  }
+
+  get relativeTime(): string {
+    return new Time(this.createDate * 1000).getRelativeString(Date.now());
+  }
+
+  get formattedGameLength(): string {
+    return new Time(this.gameLength * 1000).format();
   }
 }
 
