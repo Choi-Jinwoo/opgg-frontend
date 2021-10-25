@@ -26,7 +26,7 @@ const UsedItems: React.FC<Props> = ({ items }) => {
           />,
         );
       } else {
-        itemList.push(<EmptyItem />);
+        itemList.push(<EmptyItem key={i} />);
       }
     }
 

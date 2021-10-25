@@ -1,31 +1,30 @@
 import React from 'react';
-import { GameChampion } from '@src/models/game';
+import { GameTeam } from '@src/models/game';
 import styled from 'styled-components';
 
-type Player = {
-  champion: GameChampion;
-  summonerName: string;
-};
-
 type Props = {
-  teamA: Player[];
-  teamB: Player[];
+  teamA: GameTeam;
+  teamB: GameTeam;
 };
 
 const TeamChampions: React.FC<Props> = ({ teamA, teamB }) => {
-  const teamAChampions = teamA.map((player, index) => (
-    <ChampionWrapper key={index}>
-      <ChampionImage src={player.champion.imageUrl}></ChampionImage>
-      <ChampionName>{player.summonerName}</ChampionName>
-    </ChampionWrapper>
-  ));
+  const teamAChampions = teamA.players.map(
+    ({ champion, summonerName }, index) => (
+      <ChampionWrapper key={index}>
+        <ChampionImage src={champion.imageUrl}></ChampionImage>
+        <ChampionName>{summonerName}</ChampionName>
+      </ChampionWrapper>
+    ),
+  );
 
-  const teamBChampions = teamB.map((player, index) => (
-    <ChampionWrapper key={index}>
-      <ChampionImage src={player.champion.imageUrl}></ChampionImage>
-      <ChampionName>{player.summonerName}</ChampionName>
-    </ChampionWrapper>
-  ));
+  const teamBChampions = teamB.players.map(
+    ({ champion, summonerName }, index) => (
+      <ChampionWrapper key={index}>
+        <ChampionImage src={champion.imageUrl}></ChampionImage>
+        <ChampionName>{summonerName}</ChampionName>
+      </ChampionWrapper>
+    ),
+  );
 
   return (
     <Container>

@@ -9,17 +9,49 @@ import UsedItems from '../UsedItems';
 import WARD_RED_ICON from '@src/assets/images/ward-red-icon.png';
 import WARD_BLUE_ICON from '@src/assets/images/ward-blue-icon.png';
 import TeamChampions from '../TeamChampions';
+import Game from '@src/models/game';
+import useGameTeams from '@src/hooks/useGameTeams';
 
-const MatchItem: React.FC = () => {
+type Props = {
+  game: Game;
+};
+
+const ITEM_THEME = {
+  lose: {
+    label: '패배',
+    bgColor: '#d6b5b2',
+    borderColor: '#c0aba8',
+    fontColor: theme.colors.darkRed,
+    wardIcon: WARD_RED_ICON,
+  },
+  win: {
+    label: '승리',
+    bgColor: '#b0ceea',
+    borderColor: '#a1b8cd',
+    fontColor: theme.colors.darkBlue,
+    wardIcon: WARD_BLUE_ICON,
+  },
+};
+
+const MatchItem: React.FC<Props> = ({ game }) => {
+  const [teams] = useGameTeams(game.gameId);
+
+  const { gameType, isWin, champion, spells, items, peak, kda, stats } = game;
+  const { kill, assist, death, cs, csPerMin, contributionForKillRate } =
+    stats.general;
+  const { visionWardsBought } = stats.ward;
+
+  const itemTheme = ITEM_THEME[isWin ? 'win' : 'lose'];
+
   return (
-    <Container>
+    <Container bgColor={itemTheme.bgColor} borderColor={itemTheme.borderColor}>
       <MatchInfo>
         <Text
           fontSize={theme.fontSizes.tiny}
           fontWeight="bold"
           color={theme.colors.gray8}
         >
-          솔랭
+          {gameType}
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray8}>
           하루전
@@ -27,10 +59,10 @@ const MatchItem: React.FC = () => {
         <Text
           fontSize={theme.fontSizes.tiny}
           fontWeight="bold"
-          color={theme.colors.darkRed}
+          color={itemTheme.fontColor}
           marginTop={4}
         >
-          패배
+          {itemTheme.label}
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray8}>
           15분 53초
@@ -38,34 +70,24 @@ const MatchItem: React.FC = () => {
       </MatchInfo>
 
       <ChampionWrapper>
-        <RoundImage
-          src="https://opgg-static.akamaized.net/images/lol/champion/Malzahar.png"
-          alt=""
-        />
+        <RoundImage src={champion.imageUrl} alt="챔피언" />
 
         <SpellWrapper>
-          <RoundSquareImage
-            src="https://opgg-static.akamaized.net/images/lol/spell/SummonerTeleport.png"
-            alt=""
-          />
-
-          <RoundSquareImage
-            src="https://opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png"
-            alt=""
-          />
+          <RoundSquareImage src={spells[0].imageUrl} alt="스펠" />
+          <RoundSquareImage src={spells[1].imageUrl} alt="스펠" />
         </SpellWrapper>
 
         <PeakWrapper>
           <RoundImage
             width={22}
-            src="https://opgg-static.akamaized.net/images/lol/perk/8229.png"
-            alt=""
+            src={peak[0]}
+            alt="룬"
             bgColor={theme.colors.black}
           />
           <RoundImage
             width={22}
-            src="https://opgg-static.akamaized.net/images/lol/perkStyle/8300.png"
-            alt=""
+            src={peak[1]}
+            alt="룬"
             bgColor={`${theme.colors.black}10`}
           />
         </PeakWrapper>
@@ -77,11 +99,13 @@ const MatchItem: React.FC = () => {
           fontSize={theme.fontSizes.regular}
           color={theme.colors.gray7}
         >
-          {2}/{<Emphasize color={theme.colors.darkRed}>2</Emphasize>}/{1}
+          {`${kill}`}/
+          {<Emphasize color={theme.colors.darkRed}>{` ${death} `}</Emphasize>}/
+          {` ${assist}`}
         </Text>
         <Text color={theme.colors.gray7} fontSize={theme.fontSizes.tiny}>
           <Emphasize fontWeight="bold" color={theme.colors.black}>
-            1.50:1
+            {kda}:1
           </Emphasize>{' '}
           평점
         </Text>
@@ -89,149 +113,51 @@ const MatchItem: React.FC = () => {
 
       <MatchDetailWrapper>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray7}>
-          레벨8
+          레벨 {champion.level}
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray7}>
-          20 (1.3) CS
+          {cs} ({csPerMin}) CS
         </Text>
         <Text
           fontSize={theme.fontSizes.tiny}
           color={theme.colors.darkRed}
           fontWeight="bold"
         >
-          킬관여 38%
+          킬관여 {contributionForKillRate}
         </Text>
       </MatchDetailWrapper>
 
       <ItemWrapper>
-        <UsedItems
-          items={[
-            {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/item/1026.png',
-            },
-            {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/item/3198.png',
-            },
-            {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/item/3020.png',
-            },
-            {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/item/1026.png',
-            },
-            {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/item/3364.png',
-            },
-          ]}
-        />
+        <UsedItems items={items} />
         <WardIconWrapper>
-          <BlueWardIcon />
+          <WardIcon src={itemTheme.wardIcon} />
           <Text
             fontSize={theme.fontSizes.tiny}
             fontWeight="bold"
             marginLeft={4}
           >
-            제어와드 1
+            제어와드 {visionWardsBought}
           </Text>
         </WardIconWrapper>
       </ItemWrapper>
 
-      <TeamChampions
-        teamB={[
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Tristana.png',
-              level: 7,
-            },
-            summonerName: 'qwetyz',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Lucian.png',
-              level: 9,
-            },
-            summonerName: 'SANDBOX Lonely',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Tristana.png',
-              level: 7,
-            },
-            summonerName: 'KZ Quad',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Anivia.png',
-              level: 31,
-            },
-            summonerName: 'feng ji xu chui',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Viktor.png',
-              level: 11,
-            },
-            summonerName: '요붕스1',
-          },
-        ]}
-        teamA={[
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Tristana.png',
-              level: 7,
-            },
-            summonerName: 'qwetyz',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Lucian.png',
-              level: 9,
-            },
-            summonerName: 'SANDBOX Lonely',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Tristana.png',
-              level: 7,
-            },
-            summonerName: 'KZ Quad',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Anivia.png',
-              level: 31,
-            },
-            summonerName: 'feng ji xu chui',
-          },
-          {
-            champion: {
-              imageUrl:
-                'https://opgg-static.akamaized.net/images/lol/champion/Viktor.png',
-              level: 11,
-            },
-            summonerName: '요붕스1',
-          },
-        ]}
-      />
+      {teams && <TeamChampions teamA={teams[0]} teamB={teams[1]} />}
     </Container>
   );
 };
 
-const Container = styled.li`
+type ContainerProps = {
+  bgColor: string;
+  borderColor: string;
+};
+
+const Container = styled.li<ContainerProps>`
   display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  width: 690px;
+  background-color: ${(props) => props.bgColor};
+  border: 1px solid ${(props) => props.borderColor};
 `;
 
 const ColumnWrapper = styled.div`
@@ -246,7 +172,9 @@ const ColumnWrapper = styled.div`
   }
 `;
 
-const MatchInfo = styled(ColumnWrapper)``;
+const MatchInfo = styled(ColumnWrapper)`
+  width: 60px;
+`;
 
 const ChampionWrapper = styled.div`
   display: flex;
@@ -273,15 +201,5 @@ const WardIcon = styled.img`
   width: 16px;
   height: 16px;
 `;
-
-const BlueWardIcon = styled(WardIcon).attrs({
-  src: WARD_BLUE_ICON,
-  alt: '제어와드',
-})``;
-
-const RedWardIcon = styled(WardIcon).attrs({
-  src: WARD_RED_ICON,
-  alt: '제어와드',
-})``;
 
 export default MatchItem;

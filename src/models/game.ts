@@ -30,6 +30,17 @@ type WardStats = {
   visionWardsBought: number;
 };
 
+export type GamePlayer = {
+  champion: GameChampion;
+  summonerId: string;
+  summonerName: string;
+};
+
+export type GameTeam = {
+  teamId: number;
+  players: GamePlayer[];
+};
+
 enum GameTypes {
   SOLO_RANK = '솔랭',
   GENERAL = '일반',
@@ -40,7 +51,7 @@ export class GameAttributes {
   champion!: GameChampion;
   spells!: GameSpell[];
   items!: GameItem[];
-  gameId!: number;
+  gameId!: string;
   createDate!: number;
   gameLength!: number;
   gameType!: GameTypes;
@@ -68,6 +79,13 @@ export class GameAttributes {
 class Game extends GameAttributes {
   static from(game: GameAttributes): Game {
     return new Game(game);
+  }
+
+  get kda(): string {
+    const { kill, death, assist } = this.stats.general;
+    if (death === 0) return 'Perfect';
+
+    return ((kill + assist) / death).toFixed(2);
   }
 }
 
