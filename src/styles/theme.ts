@@ -5,6 +5,7 @@ const theme = {
     azure: '#1ea1f7',
     blue: '#1f8ecd',
     lightRed: '#ee5a52',
+    darkRed: '#d0021b',
     red: '#c6443e',
     orange: '#e19205',
     green: '#2daf7f',
