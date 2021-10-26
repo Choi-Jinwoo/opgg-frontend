@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.gray2};
   }
 
-  ul, ol {
+  li {
     list-style: none;
   }
 `;
