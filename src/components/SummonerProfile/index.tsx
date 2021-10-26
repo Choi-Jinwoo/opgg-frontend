@@ -26,29 +26,40 @@ const SummonerProfile: React.FC = () => {
 
   return (
     <Container>
-      <PreviousTiers tiers={previousTiers} />
+      <InnerWrapper>
+        <PreviousTiers tiers={previousTiers} />
 
-      <SummonerMainProfileWrapper>
-        <SummonerImage
-          profileBorderImageUrl={profileBorderImageUrl}
-          profileImageUrl={profileImageUrl}
-          level={level}
-        />
+        <SummonerMainProfileWrapper>
+          <SummonerImage
+            profileBorderImageUrl={profileBorderImageUrl}
+            profileImageUrl={profileImageUrl}
+            level={level}
+          />
 
-        <SummonerInfo>
-          <Heading>{name}</Heading>
-          <Text fontSize={theme.fontSizes.small} color={theme.colors.gray5}>
-            {/* TODO: bold 처리 수정 필요 */}
-            레더 랭킹<b>{ladderRank.rank}</b>위 (상위{' '}
-            {ladderRank.rankPercentOfTop}%)
-          </Text>
-        </SummonerInfo>
-      </SummonerMainProfileWrapper>
+          <SummonerInfo>
+            <Heading>{name}</Heading>
+            <Text fontSize={theme.fontSizes.small} color={theme.colors.gray5}>
+              {/* TODO: bold 처리 수정 필요 */}
+              레더 랭킹<b>{ladderRank.rank}</b>위 (상위{' '}
+              {ladderRank.rankPercentOfTop}%)
+            </Text>
+          </SummonerInfo>
+        </SummonerMainProfileWrapper>
+      </InnerWrapper>
     </Container>
   );
 };
 
-const Container = styled.section``;
+const Container = styled.section`
+  border-bottom: 1px solid ${(props) => props.theme.colors.gray3};
+`;
+
+const InnerWrapper = styled.div`
+  width: ${(props) => props.theme.innerSizes.desktop};
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px;
+`;
 
 const SummonerMainProfileWrapper = styled.div`
   display: flex;
