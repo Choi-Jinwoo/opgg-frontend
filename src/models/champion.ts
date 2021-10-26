@@ -1,14 +1,14 @@
 export class ChampionAttributes {
-  id!: number;
-  key!: string;
-  name!: string;
-  imageUrl!: string;
-  games!: number;
-  kills!: number;
-  deaths!: number;
-  assists!: number;
-  wins!: number;
-  losses!: number;
+  id: number;
+  key: string;
+  name: string;
+  imageUrl: string;
+  games: number;
+  kills: number;
+  deaths: number;
+  assists: number;
+  wins: number;
+  losses: number;
 
   constructor(champion: ChampionAttributes) {
     this.id = champion.id;

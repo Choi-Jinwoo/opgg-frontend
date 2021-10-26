@@ -1,14 +1,14 @@
 export class TierRankAttributes {
-  division!: string;
-  imageUrl!: string;
-  lp!: number;
-  name!: string;
-  season!: number;
-  shortString!: string;
-  string!: string;
-  tier!: string;
-  tierDivision!: string;
-  tierRankPoint!: number;
+  division: string;
+  imageUrl: string;
+  lp: number;
+  name: string;
+  season: number;
+  shortString: string;
+  string: string;
+  tier: string;
+  tierDivision: string;
+  tierRankPoint: number;
 
   constructor(tierRank: TierRankAttributes) {
     this.division = tierRank.division;

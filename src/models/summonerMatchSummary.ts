@@ -1,9 +1,9 @@
 export class SummonerMatchSummaryAttributes {
-  wins!: number;
-  losses!: number;
-  kills!: number;
-  deaths!: number;
-  assists!: number;
+  wins: number;
+  losses: number;
+  kills: number;
+  deaths: number;
+  assists: number;
 
   constructor(summonerMatchSummary: SummonerMatchSummaryAttributes) {
     this.wins = summonerMatchSummary.wins;

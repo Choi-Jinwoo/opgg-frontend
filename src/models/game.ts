@@ -51,19 +51,19 @@ export enum GameTypes {
 }
 
 export class GameAttributes {
-  champion!: GameChampion;
-  spells!: GameSpell[];
-  items!: GameItem[];
-  gameId!: string;
-  createDate!: number;
-  gameLength!: number;
-  gameType!: GameTypes;
-  stats!: {
+  champion: GameChampion;
+  spells: GameSpell[];
+  items: GameItem[];
+  gameId: string;
+  createDate: number;
+  gameLength: number;
+  gameType: GameTypes;
+  stats: {
     general: GeneralStats;
     ward: WardStats;
   };
-  peak!: string[];
-  isWin!: boolean;
+  peak: string[];
+  isWin: boolean;
 
   constructor(game: GameAttributes) {
     this.champion = game.champion;

@@ -7,11 +7,11 @@ export enum Positions {
 }
 
 export class SummonerPositionAttributes {
-  games!: number;
-  wins!: number;
-  losses!: number;
-  position!: Positions;
-  positionName!: string;
+  games: number;
+  wins: number;
+  losses: number;
+  position: Positions;
+  positionName: string;
 
   constructor(summonerPosition: SummonerPositionAttributes) {
     this.games = summonerPosition.games;

@@ -1,18 +1,18 @@
 import TierRank from './tierRank';
 
 export class SummonerAttributes {
-  name!: string;
-  level!: number;
-  previousTiers!: TierRank[];
-  profileBackgroundImageUrl!: string;
-  profileBorderImageUrl!: string;
-  profileImageUrl!: string;
-  url!: string;
-  ladderRank!: {
+  name: string;
+  level: number;
+  previousTiers: TierRank[];
+  profileBackgroundImageUrl: string;
+  profileBorderImageUrl: string;
+  profileImageUrl: string;
+  url: string;
+  ladderRank: {
     rank: number;
     rankPercentOfTop: number;
   };
-  leagues!: {
+  leagues: {
     hasResults: boolean;
     losses: number;
     wins: number;
