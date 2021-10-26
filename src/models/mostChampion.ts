@@ -40,7 +40,19 @@ class MostChampion extends MostChampionAttributes {
   }
 
   get winningRate(): string {
-    return (this.wins / this.games).toFixed(0);
+    return ((this.wins / this.games) * 100).toFixed(0);
+  }
+
+  get killsAvg(): string {
+    return (this.kills / this.games).toFixed(1);
+  }
+
+  get deathsAvg(): string {
+    return (this.deaths / this.games).toFixed(1);
+  }
+
+  get assistsAvg(): string {
+    return (this.assists / this.games).toFixed(1);
   }
 }
 
