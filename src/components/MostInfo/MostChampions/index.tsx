@@ -17,6 +17,11 @@ const MostChampions: React.FC = () => {
   return <Container>{mostChampionItems}</Container>;
 };
 
-const Container = styled.ul``;
+const Container = styled.ul`
+  box-sizing: border-box;
+  width: 300px;
+  background-color: ${(props) => props.theme.colors.gray2};
+ }
+`;
 
 export default observer(MostChampions);

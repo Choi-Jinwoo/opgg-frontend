@@ -4,6 +4,7 @@ import MatchList from '@src/components/MatchList';
 import MatchSummary from '@src/components/MatchSummary';
 import SummonerProfile from '@src/components/SummonerProfile';
 import useMatches from '@src/hooks/useMatches';
+import useMostInfo from '@src/hooks/useMostInfo';
 import useSummonerProfile from '@src/hooks/useSummonerProfile';
 import React from 'react';
 import styled from 'styled-components';
@@ -11,6 +12,7 @@ import styled from 'styled-components';
 const SummonerPage: React.FC = () => {
   useSummonerProfile();
   useMatches();
+  useMostInfo();
 
   return (
     <Container>

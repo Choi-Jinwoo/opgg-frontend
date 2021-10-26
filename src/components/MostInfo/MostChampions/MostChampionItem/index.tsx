@@ -63,12 +63,15 @@ const MostChampionItem: React.FC<Props> = ({ champion }) => {
 };
 
 const Container = styled.li`
-  box-sizing: border-box;
   padding: 2px 8px;
   display: flex;
   algin-items: center;
   justify-content: space-between;
-  width: 300px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.gray3};
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const ItemWrapper = styled.div`
