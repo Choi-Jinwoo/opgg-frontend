@@ -3,40 +3,48 @@ import styled from 'styled-components';
 import RoundImage from '@src/components/common/RoundImage';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
+import MostChampion from '@src/models/mostChampion';
 
-const MostChampionItem: React.FC = () => {
+type Props = {
+  champion: MostChampion;
+};
+
+const MostChampionItem: React.FC<Props> = ({ champion }) => {
+  const {
+    name,
+    imageUrl,
+    kda,
+    cs,
+    winningRate,
+    games,
+    killsAvg,
+    assistsAvg,
+    deathsAvg,
+  } = champion;
+
   return (
     <Container>
-      <RoundImage
-        src="https://opgg-static.akamaized.net/images/lol/champion/Galio.png?image=w_30&v=1"
-        alt=""
-      />
+      <RoundImage src={imageUrl} alt={name} />
 
       <ItemWrapper>
-        <Text
-          fontSize={theme.fontSizes.small}
-          color={theme.colors.gray7}
-          fontWeight="bold"
-        >
-          신지드
-        </Text>
+        <ChampionName>{name}</ChampionName>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
-          CS 78.8
+          CS {cs}
         </Text>
       </ItemWrapper>
 
-      <AlignCenterItemWrapper>
+      <KDAWrapper>
         <Text
           fontSize={theme.fontSizes.small}
           color={theme.colors.gray7}
           fontWeight="bold"
         >
-          2.46:1 평점
+          {kda}:1 평점
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
-          6.6 / 6.1 / 10.7
+          {killsAvg} / {deathsAvg} / {assistsAvg}
         </Text>
-      </AlignCenterItemWrapper>
+      </KDAWrapper>
 
       <AlignCenterItemWrapper>
         <Text
@@ -44,10 +52,10 @@ const MostChampionItem: React.FC = () => {
           color={theme.colors.gray7}
           fontWeight="bold"
         >
-          79%
+          {winningRate}%
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
-          35게임
+          {games}게임
         </Text>
       </AlignCenterItemWrapper>
     </Container>
@@ -55,18 +63,37 @@ const MostChampionItem: React.FC = () => {
 };
 
 const Container = styled.li`
+  box-sizing: border-box;
+  padding: 2px 8px;
   display: flex;
   algin-items: center;
+  justify-content: space-between;
+  width: 300px;
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0px 12px;
+  margin: 0px 8px;
+`;
+
+const ChampionName = styled.span`
+  font-size: ${(props) => props.theme.fontSizes.medium};
+  color: ${(props) => props.theme.colors.gray7};
+  font-weight: bold;
+  overflow: hidden;
+  width: 68px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const AlignCenterItemWrapper = styled(ItemWrapper)`
+  align-items: center;
+`;
+
+const KDAWrapper = styled(ItemWrapper)`
+  width: 88px;
   align-items: center;
 `;
 
