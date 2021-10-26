@@ -2,6 +2,7 @@ import CurrentTier from '@src/components/CurrentTier';
 import Header from '@src/components/Header';
 import MatchList from '@src/components/MatchList';
 import MatchSummary from '@src/components/MatchSummary';
+import MostInfo from '@src/components/MostInfo';
 import SummonerProfile from '@src/components/SummonerProfile';
 import useMatches from '@src/hooks/useMatches';
 import useMostInfo from '@src/hooks/useMostInfo';
@@ -21,6 +22,7 @@ const SummonerPage: React.FC = () => {
       <MainContent>
         <SideSection>
           <CurrentTier />
+          <MostInfo />
         </SideSection>
 
         <MainSection>

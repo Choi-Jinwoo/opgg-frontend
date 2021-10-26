@@ -18,10 +18,8 @@ const MostChampions: React.FC = () => {
 };
 
 const Container = styled.ul`
-  box-sizing: border-box;
-  width: 300px;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.gray2};
- }
 `;
 
 export default observer(MostChampions);
