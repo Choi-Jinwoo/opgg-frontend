@@ -34,6 +34,8 @@ class Champion extends ChampionAttributes {
   }
 
   get kda(): string {
+    if (this.deaths === 0) return 'Perfect';
+
     return (this.kills + this.assists / this.deaths).toFixed(2);
   }
 }

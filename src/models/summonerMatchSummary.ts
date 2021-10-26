@@ -22,6 +22,8 @@ export default class SummonerMatchSummary extends SummonerMatchSummaryAttributes
   }
 
   get kda(): string {
+    if (this.deaths === 0) return 'Perfect';
+
     return ((this.assists + this.kills) / this.deaths).toFixed(2);
   }
 
