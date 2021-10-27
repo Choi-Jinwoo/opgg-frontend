@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
-import RecentSearchItem from '../RecentSearchItem';
+import RecentSearchItem from './RecentSearchItem';
 import recentSearchStore from '@src/stores/recentSearchStore';
 import { observer } from 'mobx-react';
 
