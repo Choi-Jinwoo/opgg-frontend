@@ -1,13 +1,15 @@
 import theme from '@src/styles/theme';
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import Text from '@src/components/common/Text';
+import CLOSE_ICON from '@src/assets/images/close-icon.png';
 
 type Props = {
   keyword: string;
+  onCloseClick: MouseEventHandler;
 };
 
-const RecentSearchItem: React.FC<Props> = ({ keyword }) => {
+const RecentSearchItem: React.FC<Props> = ({ keyword, onCloseClick }) => {
   return (
     <Container>
       <RecentSearchContent>
@@ -17,8 +19,7 @@ const RecentSearchItem: React.FC<Props> = ({ keyword }) => {
       </RecentSearchContent>
 
       <IconsWrapper>
-        <span>O</span>
-        <span>X</span>
+        <CloseIcon onClick={onCloseClick} />
       </IconsWrapper>
     </Container>
   );
@@ -43,6 +44,13 @@ const IconsWrapper = styled.div`
   & > * + * {
     margin-left: 8px;
   }
+`;
+
+const CloseIcon = styled.img.attrs({
+  src: CLOSE_ICON,
+  alt: '닫기',
+})`
+  cursor: pointer;
 `;
 
 export default RecentSearchItem;

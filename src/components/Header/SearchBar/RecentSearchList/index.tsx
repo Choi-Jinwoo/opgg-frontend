@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import RecentSearchItem from '../RecentSearchItem';
 import recentSearchStore from '@src/stores/recentSearchStore';
@@ -7,12 +7,22 @@ import { observer } from 'mobx-react';
 const RecentSearchList: React.FC = () => {
   const { searchKeywords } = recentSearchStore;
 
+  const makeCloseClickHandler: (keyword: string) => MouseEventHandler =
+    (keyword) => (e) => {
+      e.stopPropagation();
+      recentSearchStore.remove(keyword);
+    };
+
   if (searchKeywords.length <= 0) {
     return <NoRecentSearch>최근 검색한 소환사가 없습니다</NoRecentSearch>;
   }
 
   const recentSearchItems = searchKeywords.map((keyword) => (
-    <RecentSearchItem keyword={keyword} key={keyword} />
+    <RecentSearchItem
+      keyword={keyword}
+      key={keyword}
+      onCloseClick={makeCloseClickHandler(keyword)}
+    />
   ));
 
   return <Container>{recentSearchItems}</Container>;
