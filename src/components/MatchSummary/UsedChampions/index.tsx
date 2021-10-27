@@ -1,13 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import matchStore from '@src/stores/matchStore';
-import MostUsedChampionItem from './MostUsedChampionItem';
+import UsedChampionItem from './UsedChampionItem';
 import styled from 'styled-components';
 import NoChampionData from './NoChampionData';
 
 const MAX_MOST_USED_CHAMPIONS = 3;
 
-const MostUsedChampions: React.FC = () => {
+const UsedChampions: React.FC = () => {
   const { mostChampions } = matchStore;
 
   if (mostChampions === null) {
@@ -15,10 +15,10 @@ const MostUsedChampions: React.FC = () => {
   }
 
   const mostUsedChampionItems = mostChampions.map((champion) => (
-    <MostUsedChampionItem key={champion.id} champion={champion} />
+    <UsedChampionItem key={champion.id} champion={champion} />
   ));
 
-  const NoChampionDataItems = new Array(
+  const noChampionDataItems = new Array(
     MAX_MOST_USED_CHAMPIONS - mostChampions.length,
   )
     .fill(null)
@@ -27,11 +27,11 @@ const MostUsedChampions: React.FC = () => {
   return (
     <Container>
       {mostUsedChampionItems}
-      {NoChampionDataItems}
+      {noChampionDataItems}
     </Container>
   );
 };
 
 const Container = styled.ul``;
 
-export default observer(MostUsedChampions);
+export default observer(UsedChampions);

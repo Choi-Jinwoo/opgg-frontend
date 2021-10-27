@@ -4,16 +4,15 @@ import RoundImage from '@src/components/common/RoundImage';
 import Champion from '@src/models/domains/UsedChampion';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
-import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
-import winningRateColorCondition from '@src/lib/conditionalColor/WinningRateColorCondition';
-import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
+import WinRateTemplate from '@src/components/template/WinRateTemplate';
+import KDARateTemplate from '@src/components/template/KDARateTemplate';
 
 type Props = {
   champion: Champion;
 };
 
 const MostUsedChampionItem: React.FC<Props> = ({ champion }) => {
-  const { imageUrl, name, winningRate, wins, losses, kda } = champion;
+  const { imageUrl, name, wins, losses, winRate, kdaRate } = champion;
 
   return (
     <Container>
@@ -23,14 +22,9 @@ const MostUsedChampionItem: React.FC<Props> = ({ champion }) => {
         <Text fontSize={theme.fontSizes.medium}>{name}</Text>
 
         <ChampionRateWrapper>
-          <ConditionalColorFont
-            value={winningRate}
-            condition={winningRateColorCondition}
-          >
-            <Text fontWeight="bold" fontSize={theme.fontSizes.tiny}>
-              {winningRate}%
-            </Text>
-          </ConditionalColorFont>
+          <Text fontWeight="bold" fontSize={theme.fontSizes.tiny}>
+            <WinRateTemplate winRate={winRate} />
+          </Text>
 
           <Text
             fontSize={theme.fontSizes.tiny}
@@ -38,14 +32,10 @@ const MostUsedChampionItem: React.FC<Props> = ({ champion }) => {
             marginLeft={8}
           >{`(${wins}승 ${losses}패)`}</Text>
 
-          <ConditionalColorFont
-            value={Number(kda)}
-            condition={kdaColorCondition}
-          >
-            <Text fontSize={theme.fontSizes.tiny} marginLeft={8}>
-              {kda} 평점
-            </Text>
-          </ConditionalColorFont>
+          <Text fontSize={theme.fontSizes.tiny} marginLeft={8}>
+            <KDARateTemplate kdaRate={kdaRate} />
+            평점
+          </Text>
         </ChampionRateWrapper>
       </ChampionInfoWrapper>
     </Container>
