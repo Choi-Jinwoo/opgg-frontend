@@ -4,20 +4,26 @@ import styled from 'styled-components';
 
 type Props = {
   kdaRate: number;
+  hasHighlight?: boolean;
+  hasPostfix?: boolean;
 };
 
-const KDARateTemplate: React.FC<Props> = ({ kdaRate }) => {
+const KDARateTemplate: React.FC<Props> = ({
+  kdaRate,
+  hasHighlight = true,
+  hasPostfix = true,
+}) => {
+  const color = new KDARateColorCondition(kdaRate).pick();
+  const postfix = hasPostfix ? ':1' : '';
+
   if (kdaRate === 0) {
-    return (
-      <Container color={new KDARateColorCondition(kdaRate).pick()}>
-        Perfect
-      </Container>
-    );
+    return <Container color={hasHighlight ? color : ''}>Perfect</Container>;
   }
 
   return (
-    <Container color={new KDARateColorCondition(kdaRate).pick()}>
+    <Container color={hasHighlight ? color : ''}>
       {kdaRate.toFixed(2)}
+      {postfix}
     </Container>
   );
 };

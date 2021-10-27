@@ -33,8 +33,7 @@ const MostUsedChampionItem: React.FC<Props> = ({ champion }) => {
           >{`(${wins}승 ${losses}패)`}</Text>
 
           <Text fontSize={theme.fontSizes.tiny} marginLeft={8}>
-            <KDARateTemplate kdaRate={kdaRate} />
-            평점
+            <KDARateTemplate kdaRate={kdaRate} hasPostfix={false} /> 평점
           </Text>
         </ChampionRateWrapper>
       </ChampionInfoWrapper>

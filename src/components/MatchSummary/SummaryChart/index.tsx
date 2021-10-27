@@ -28,7 +28,7 @@ const SummaryChart: React.FC = () => {
         >{`${games}전 ${wins}승 ${losses}패`}</Text>
         <PieChart
           size={100}
-          title={`${winRate}%`}
+          title={`${winRate.toFixed(0)}%`}
           bgColor={theme.colors.gray2}
           titleColor={theme.colors.gray7}
           data={[

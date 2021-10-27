@@ -114,7 +114,7 @@ const MatchItem: React.FC<Props> = ({ game }) => {
           <KDATemplate kill={kill} death={death} assist={assist} />
         </Text>
         <Text color={theme.colors.gray7} fontSize={theme.fontSizes.tiny}>
-          <KDARateTemplate kdaRate={kdaRate} /> 평점
+          <KDARateTemplate kdaRate={kdaRate} hasHighlight={false} /> 평점
         </Text>
       </KDAWrapper>
 
