@@ -79,7 +79,7 @@ const FilterWrapper = styled.div`
 
 const FilterList = styled.ul`
   display: flex;
-  algin-items: center;
+  align-items: center;
   & > * + * {
     margin-left: 20px;
   }

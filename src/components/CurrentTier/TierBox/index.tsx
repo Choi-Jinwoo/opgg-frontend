@@ -55,7 +55,7 @@ const TierBox: React.FC<Props> = ({
 
 const Container = styled.div`
   display: flex;
-  algin-items: center;
+  align-items: center;
   width: 300px;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.colors.gray1};

@@ -72,7 +72,7 @@ const MostChampionItem: React.FC<Props> = ({ champion }) => {
 const Container = styled.li`
   padding: 2px 8px;
   display: flex;
-  algin-items: center;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${(props) => props.theme.colors.gray3};
 
