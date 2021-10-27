@@ -10,7 +10,7 @@ type League = {
   tierRank: TierRank;
 };
 
-type TierRank = {
+export type TierRank = {
   division: string;
   imageUrl: string;
   lp: number;

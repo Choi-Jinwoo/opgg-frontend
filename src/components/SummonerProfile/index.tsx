@@ -7,6 +7,7 @@ import SummonerImage from './SummonerImage';
 import theme from '@src/styles/theme';
 import summonerStore from '@src/stores/summonerStore';
 import Heading from '../common/Heading';
+import Emphasize from '../common/Emphasize';
 
 const SummonerProfile: React.FC = () => {
   const { summoner } = summonerStore;
@@ -39,8 +40,7 @@ const SummonerProfile: React.FC = () => {
           <SummonerInfo>
             <Heading>{name}</Heading>
             <Text fontSize={theme.fontSizes.small} color={theme.colors.gray5}>
-              {/* TODO: bold 처리 수정 필요 */}
-              레더 랭킹<b>{ladderRank.rank}</b>위 (상위{' '}
+              레더 랭킹<Emphasize>{ladderRank.rank}</Emphasize>위 (상위{' '}
               {ladderRank.rankPercentOfTop}%)
             </Text>
           </SummonerInfo>

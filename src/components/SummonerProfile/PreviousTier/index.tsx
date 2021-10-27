@@ -1,4 +1,4 @@
-import TierRank from '@src/models/domains/TierRank';
+import { TierRank } from '@src/models/domains/Summoner';
 import React from 'react';
 import styled from 'styled-components';
 import TierBadge from '../TierBadge';
@@ -8,11 +8,11 @@ type Props = {
 };
 
 const PreviousTiers: React.FC<Props> = ({ tiers }) => {
-  const tierBadges = tiers.map((tier, index) => (
+  const iterBadgeItems = tiers.map((tier, index) => (
     <TierBadge key={index} tier={tier} />
   ));
 
-  return <Container>{tierBadges}</Container>;
+  return <Container>{iterBadgeItems}</Container>;
 };
 
 const Container = styled.div`

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import TierRank from '@src/models/domains/TierRank';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
+import { TierRank } from '@src/models/domains/Summoner';
 
 type Props = {
   tier: TierRank;
@@ -16,7 +16,7 @@ const TierBadge: React.FC<Props> = ({ tier }) => {
         fontSize={theme.fontSizes.tiny}
         fontWeight="bold"
       >
-        {tier.seasonString}
+        S{tier}
       </Text>
       <Text
         color={theme.colors.gray7}
