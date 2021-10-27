@@ -41,7 +41,7 @@ type Props = {
 };
 
 const PreferPositionItem: React.FC<Props> = ({ position, rate }) => {
-  const { winningRate, position: positionKey } = position;
+  const { winRate, position: positionKey } = position;
   const { image, name } = POSITION_META[positionKey];
 
   return (
@@ -64,7 +64,9 @@ const PreferPositionItem: React.FC<Props> = ({ position, rate }) => {
             marginLeft={8}
           >
             승률{' '}
-            <Emphasize color={theme.colors.black}>{winningRate}%</Emphasize>
+            <Emphasize color={theme.colors.black}>
+              {winRate.toFixed(0)}%
+            </Emphasize>
           </Text>
         </RateWrapper>
       </PositionInfoWrapper>

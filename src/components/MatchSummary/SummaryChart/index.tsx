@@ -5,18 +5,18 @@ import styled from 'styled-components';
 import Text from '@src/components/common/Text';
 import matchStore from '@src/stores/matchStore';
 import { observer } from 'mobx-react';
-import Emphasize from '@src/components/common/Emphasize';
-import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
-import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
+import KDATemplate from '@src/components/template/KDATemplate';
+import KDARateTemplate from '@src/components/template/KDARateTemplate';
 
 const SummaryChart: React.FC = () => {
-  if (matchStore.summonerMatchSummary === null) {
+  const { summonerMatchSummary } = matchStore;
+  if (summonerMatchSummary === null) {
     // TODO: 로딩 적용
     return <div>없음</div>;
   }
 
-  const { wins, losses, winningRate, totalGames, kills, deaths, assists, kda } =
-    matchStore.summonerMatchSummary;
+  const { wins, losses, winRate, games, kills, deaths, assists, kdaRate } =
+    summonerMatchSummary;
 
   return (
     <Container>
@@ -25,10 +25,10 @@ const SummaryChart: React.FC = () => {
           fontSize={theme.fontSizes.medium}
           color={theme.colors.gray7}
           marginBottom={20}
-        >{`${totalGames}전 ${wins}승 ${losses}패`}</Text>
+        >{`${games}전 ${wins}승 ${losses}패`}</Text>
         <PieChart
           size={100}
-          title={`${winningRate}%`}
+          title={`${winRate}%`}
           bgColor={theme.colors.gray2}
           titleColor={theme.colors.gray7}
           data={[
@@ -52,12 +52,11 @@ const SummaryChart: React.FC = () => {
           fontWeight="bold"
           marginBottom={8}
         >
-          {kills}/<Emphasize color={theme.colors.red}>{deaths}</Emphasize>/
-          {assists}
+          <KDATemplate kill={kills} death={deaths} assist={assists} />
         </Text>
-        <ConditionalColorFont value={kda} condition={kdaColorCondition}>
-          <Text fontSize={theme.fontSizes.regular}>{`${kda}:1`}</Text>
-        </ConditionalColorFont>
+        <Text fontSize={theme.fontSizes.regular}>
+          <KDARateTemplate kdaRate={kdaRate} />
+        </Text>
       </KDAWrapper>
     </Container>
   );
