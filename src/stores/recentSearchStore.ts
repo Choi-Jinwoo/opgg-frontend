@@ -10,9 +10,13 @@ class RecentSearchStore {
     this.searchKeywords = recentSearchStorage.read() ?? [];
   }
 
+  private findIndexByKeyword(keyword: string) {
+    return this.searchKeywords.findIndex((item) => item === keyword);
+  }
+
   @action
   add(keyword: string) {
-    const index = this.searchKeywords.findIndex((item) => item === keyword);
+    const index = this.findIndexByKeyword(keyword);
     if (index !== -1) {
       this.searchKeywords.splice(index, 1);
     }
@@ -23,7 +27,8 @@ class RecentSearchStore {
 
   @action
   remove(keyword: string) {
-    const index = this.searchKeywords.findIndex((item) => item === keyword);
+    const index = this.findIndexByKeyword(keyword);
+
     this.searchKeywords.splice(index, 1);
     recentSearchStorage.save(this.searchKeywords);
   }
