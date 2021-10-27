@@ -4,44 +4,34 @@ import styled, { css } from 'styled-components';
 import MostChampions from './MostChampions';
 import RecentChampions from './RecentChampions';
 
-enum FilterTypes {
-  CHAMPION_WINNING_RATE,
-  RECENT_RANK_WINNING_RATE,
-}
+type MostInfoFilter = 'winning-rate' | 'recent-winning-rate';
 
 const MostInfo: React.FC = () => {
-  const [filterType, setFilterType] = useState<FilterTypes>(
-    FilterTypes.CHAMPION_WINNING_RATE,
-  );
+  const [currentFilter, setCurrentFilter] =
+    useState<MostInfoFilter>('winning-rate');
 
-  const makeFilterButtonClickHandler = (type: FilterTypes) => () => {
-    setFilterType(type);
+  const makeFilterButtonClickHandler = (filter: MostInfoFilter) => () => {
+    setCurrentFilter(filter);
   };
 
   return (
     <Container>
       <ButtonWrapper>
         <FilterButton
-          onClick={makeFilterButtonClickHandler(
-            FilterTypes.CHAMPION_WINNING_RATE,
-          )}
-          isSelected={filterType === FilterTypes.CHAMPION_WINNING_RATE}
+          onClick={makeFilterButtonClickHandler('winning-rate')}
+          isSelected={currentFilter === 'winning-rate'}
         >
           챔피언 승률
         </FilterButton>
         <FilterButton
-          onClick={makeFilterButtonClickHandler(
-            FilterTypes.RECENT_RANK_WINNING_RATE,
-          )}
-          isSelected={filterType === FilterTypes.RECENT_RANK_WINNING_RATE}
+          onClick={makeFilterButtonClickHandler('recent-winning-rate')}
+          isSelected={currentFilter === 'recent-winning-rate'}
         >
           7일간 랭크 승률
         </FilterButton>
       </ButtonWrapper>
-      {filterType === FilterTypes.CHAMPION_WINNING_RATE && <MostChampions />}
-      {filterType === FilterTypes.RECENT_RANK_WINNING_RATE && (
-        <RecentChampions />
-      )}
+      {currentFilter === 'winning-rate' && <MostChampions />}
+      {currentFilter === 'recent-winning-rate' && <RecentChampions />}
     </Container>
   );
 };
