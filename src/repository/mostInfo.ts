@@ -1,5 +1,5 @@
-import { MostChampionAttributes } from '@src/models/mostChampion';
-import { RecentChampionAttributes } from '@src/models/recentChampion';
+import { MostChampionAttributes } from '@src/models/domains/mostChampion';
+import { RecentChampionAttributes } from '@src/models/domains/recentChampion';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 

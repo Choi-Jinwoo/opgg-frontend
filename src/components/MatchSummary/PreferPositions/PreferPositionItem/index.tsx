@@ -8,7 +8,9 @@ import JNG from '@src/assets/icons/jng-icon.svg';
 import MID from '@src/assets/icons/mid-icon.svg';
 import ADC from '@src/assets/icons/adc-icon.svg';
 import SUP from '@src/assets/icons/sup-icon.svg';
-import SummonerPosition, { Positions } from '@src/models/summonerPosition';
+import SummonerPosition, {
+  Positions,
+} from '@src/models/domains/summonerPosition';
 
 const POSITION_META = {
   [Positions.TOP]: {

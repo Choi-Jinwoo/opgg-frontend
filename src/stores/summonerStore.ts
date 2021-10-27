@@ -1,4 +1,4 @@
-import Summoner from '@src/models/summoner';
+import Summoner from '@src/models/domains/summoner';
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
 import summonerRepository from '@src/repository/summoner';
 

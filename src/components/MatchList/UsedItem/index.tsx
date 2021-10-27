@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GameItem } from '@src/models/game';
+import { GameItem } from '@src/models/domains/game';
 import RoundSquareImage from '@src/components/common/RoundSquareImage';
 import styled from 'styled-components';
 

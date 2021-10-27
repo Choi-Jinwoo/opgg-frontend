@@ -9,7 +9,7 @@ import UsedItems from '../UsedItems';
 import WARD_RED_ICON from '@src/assets/images/ward-red-icon.png';
 import WARD_BLUE_ICON from '@src/assets/images/ward-blue-icon.png';
 import TeamChampions from '../TeamChampions';
-import Game from '@src/models/game';
+import Game from '@src/models/domains/game';
 import useGameTeams from '@src/hooks/useGameTeams';
 
 type Props = {

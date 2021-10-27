@@ -1,7 +1,7 @@
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
-import MostChampion from '@src/models/mostChampion';
+import MostChampion from '@src/models/domains/mostChampion';
 import mostInfoRepository from '@src/repository/mostInfo';
-import RecentChampion from '@src/models/recentChampion';
+import RecentChampion from '@src/models/domains/recentChampion';
 
 class MostInfoStore {
   @observable mostChampions: MostChampion[] | null = null;

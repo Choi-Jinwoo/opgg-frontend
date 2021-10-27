@@ -1,5 +1,5 @@
 import React from 'react';
-import { GameTeam } from '@src/models/game';
+import { GameTeam } from '@src/models/domains/game';
 import styled from 'styled-components';
 
 type Props = {
