@@ -35,7 +35,7 @@ const UsedItems: React.FC<Props> = ({ items }) => {
 
   return (
     <Container>
-      <ItemWrapper>{composeItemList()}</ItemWrapper>
+      <ItemList>{composeItemList()}</ItemList>
       <WardWrapper>
         <RoundSquareImage
           width={22}
@@ -52,7 +52,7 @@ const Container = styled.div`
   display: flex;
 `;
 
-const ItemWrapper = styled.div`
+const ItemList = styled.div`
   display: grid;
   grid-template-columns: 22px 22px 22px;
   column-gap: 2px;
