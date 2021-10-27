@@ -7,11 +7,16 @@ import CLOSE_ICON from '@src/assets/images/close-icon.png';
 type Props = {
   keyword: string;
   onCloseClick: MouseEventHandler;
+  onClick: MouseEventHandler;
 };
 
-const RecentSearchItem: React.FC<Props> = ({ keyword, onCloseClick }) => {
+const RecentSearchItem: React.FC<Props> = ({
+  keyword,
+  onCloseClick,
+  onClick,
+}) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <RecentSearchContent>
         <Text color={theme.colors.gray7} fontSize={theme.fontSizes.small}>
           {keyword}

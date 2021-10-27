@@ -23,7 +23,7 @@ const SearchBar: React.FC = () => {
     makeDropDownVisible();
   };
 
-  const onSearch = () => {
+  const onSearch = (keyword: string) => {
     if (keyword.trim().length <= 0) return;
 
     recentSearchStore.add(keyword);
@@ -33,12 +33,12 @@ const SearchBar: React.FC = () => {
   };
 
   const onSearchClick = () => {
-    onSearch();
+    onSearch(keyword);
   };
 
   const onEnterPress: KeyboardEventHandler = (e) => {
     if (e.key === 'Enter') {
-      onSearch();
+      onSearch(keyword);
     }
   };
 
@@ -52,7 +52,7 @@ const SearchBar: React.FC = () => {
       />
       <SearchButton onClick={onSearchClick} />
       <DropDown isVisible={isDropDownVisible} top={36}>
-        <RecentSearchList />
+        <RecentSearchList search={onSearch} />
       </DropDown>
     </Container>
   );
