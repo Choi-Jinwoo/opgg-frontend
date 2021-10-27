@@ -9,7 +9,8 @@ export class KDARateColorCondition implements ConditionalColor<number> {
   }
 
   pick(): string {
-    if (this.value >= 5) return theme.colors.orange;
+    // KDA가 Perfect일 경우 0
+    if (this.value === 0 || this.value >= 5) return theme.colors.orange;
     if (this.value >= 4) return theme.colors.blue;
     if (this.value >= 3) return theme.colors.green;
 
