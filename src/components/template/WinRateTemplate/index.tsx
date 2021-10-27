@@ -9,7 +9,7 @@ type Props = {
 const WinRateTemplate: React.FC<Props> = ({ winRate }) => {
   return (
     <Container color={new WinRateColorCondition(winRate).pick()}>
-      {winRate}%
+      {winRate.toFixed(0)}%
     </Container>
   );
 };

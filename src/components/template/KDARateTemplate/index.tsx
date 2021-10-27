@@ -17,7 +17,7 @@ const KDARateTemplate: React.FC<Props> = ({ kdaRate }) => {
 
   return (
     <Container color={new KDARateColorCondition(kdaRate).pick()}>
-      {kdaRate}
+      {kdaRate.toFixed(2)}
     </Container>
   );
 };
