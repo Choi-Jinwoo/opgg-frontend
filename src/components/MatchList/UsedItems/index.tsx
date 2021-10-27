@@ -1,7 +1,7 @@
 import { GameItem } from '@src/models/domains/Game';
 import React from 'react';
 import styled from 'styled-components';
-import UsedItem from '../UsedItem';
+import UsedItem from './UsedItem';
 
 const MAX_ITEMS = 6;
 
@@ -14,24 +14,22 @@ const TOOLTIP_CONTENT = '아이템';
 const UsedItems: React.FC<Props> = ({ items }) => {
   const ward = items[items.length - 1];
 
-  const composeItemList = () => {
-    const itemList = [];
-    for (let i = 0; i < MAX_ITEMS; i += 1) {
-      if (i < items.length - 1) {
-        itemList.push(
-          <UsedItem key={i} item={items[i]} tooltipContent={TOOLTIP_CONTENT} />,
-        );
-      } else {
-        itemList.push(<EmptyItem key={i} />);
-      }
-    }
+  const usedItems = new Array(MAX_ITEMS).fill(null).map((_, index) => {
+    if (index < items.length - 1)
+      return (
+        <UsedItem
+          key={index}
+          item={items[index]}
+          tooltipContent={TOOLTIP_CONTENT}
+        />
+      );
 
-    return itemList;
-  };
+    return <EmptyItem key={index} />;
+  });
 
   return (
     <Container>
-      <ItemList>{composeItemList()}</ItemList>
+      <ItemList>{usedItems}</ItemList>
       <WardWrapper>
         <UsedItem item={ward} tooltipContent={TOOLTIP_CONTENT} />
       </WardWrapper>

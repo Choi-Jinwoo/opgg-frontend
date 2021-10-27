@@ -1,18 +1,20 @@
 import { GameTypes } from '@src/models/domains/Game';
-import matchStore from '@src/stores/matchStore';
+import matchStore, { MatchFilter } from '@src/stores/matchStore';
 import { observer } from 'mobx-react';
 import React from 'react';
 import styled from 'styled-components';
 import MatchItem from './MatchItem';
 
-const FILTER_TYPE_GAME_TYPE_MAP: { [key: string]: GameTypes | null } = {
+const MATCH_FILTER_MAP_TO_GAME_TYPE: {
+  [key in MatchFilter]: null | GameTypes;
+} = {
   all: null,
   solo: GameTypes.SOLO_RANK,
   free: GameTypes.FREE_RANK,
 };
 
 const MatchList: React.FC = () => {
-  const { games, filterType } = matchStore;
+  const { games, currentFilter } = matchStore;
 
   if (games === null) {
     // TODO: 없음 처리
@@ -21,8 +23,8 @@ const MatchList: React.FC = () => {
 
   const filteredGames = games.filter(
     (game) =>
-      filterType === 'all' ||
-      game.gameType === FILTER_TYPE_GAME_TYPE_MAP[filterType],
+      currentFilter === 'all' ||
+      game.gameType === MATCH_FILTER_MAP_TO_GAME_TYPE[currentFilter],
   );
 
   const matchItems = filteredGames.map((game) => (

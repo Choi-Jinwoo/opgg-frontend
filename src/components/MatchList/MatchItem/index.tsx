@@ -1,4 +1,3 @@
-import Emphasize from '@src/components/common/Emphasize';
 import RoundImage from '@src/components/common/RoundImage';
 import RoundSquareImage from '@src/components/common/RoundSquareImage';
 import Text from '@src/components/common/Text';
@@ -11,6 +10,8 @@ import WARD_BLUE_ICON from '@src/assets/images/ward-blue-icon.png';
 import TeamChampions from '../TeamChampions';
 import Game from '@src/models/domains/Game';
 import useGameTeams from '@src/hooks/useGameTeams';
+import KDATemplate from '@src/components/template/KDATemplate';
+import KDARateTemplate from '@src/components/template/KDARateTemplate';
 
 type Props = {
   game: Game;
@@ -43,7 +44,7 @@ const MatchItem: React.FC<Props> = ({ game }) => {
     spells,
     items,
     peak,
-    kda,
+    kdaRate,
     stats,
     relativeTime,
     formattedGameLength,
@@ -110,15 +111,10 @@ const MatchItem: React.FC<Props> = ({ game }) => {
           fontSize={theme.fontSizes.regular}
           color={theme.colors.gray7}
         >
-          {`${kill}`}/
-          {<Emphasize color={theme.colors.darkRed}>{` ${death} `}</Emphasize>}/
-          {` ${assist}`}
+          <KDATemplate kill={kill} death={death} assist={assist} />
         </Text>
         <Text color={theme.colors.gray7} fontSize={theme.fontSizes.tiny}>
-          <Emphasize fontWeight="bold" color={theme.colors.black}>
-            {kda}:1
-          </Emphasize>{' '}
-          평점
+          <KDARateTemplate kdaRate={kdaRate} /> 평점
         </Text>
       </KDAWrapper>
 
