@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  kill: number;
-  death: number;
-  assist: number;
+  kill: number | string;
+  death: number | string;
+  assist: number | string;
 };
 
 const KDATemplate: React.FC<Props> = ({ kill, death, assist }) => {
