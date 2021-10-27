@@ -1,13 +1,15 @@
-import RoundSquareImage from '@src/components/common/RoundSquareImage';
 import { GameItem } from '@src/models/game';
 import React from 'react';
 import styled from 'styled-components';
+import UsedItem from '../UsedItem';
 
 const MAX_ITEMS = 6;
 
 type Props = {
   items: GameItem[];
 };
+
+const TOOLTIP_CONTENT = '아이템';
 
 const UsedItems: React.FC<Props> = ({ items }) => {
   const ward = items[items.length - 1];
@@ -17,13 +19,7 @@ const UsedItems: React.FC<Props> = ({ items }) => {
     for (let i = 0; i < MAX_ITEMS; i += 1) {
       if (i < items.length - 1) {
         itemList.push(
-          <RoundSquareImage
-            width={22}
-            height={22}
-            src={items[i].imageUrl}
-            alt="아이템"
-            key={i}
-          />,
+          <UsedItem key={i} item={items[i]} tooltipContent={TOOLTIP_CONTENT} />,
         );
       } else {
         itemList.push(<EmptyItem key={i} />);
@@ -37,12 +33,7 @@ const UsedItems: React.FC<Props> = ({ items }) => {
     <Container>
       <ItemList>{composeItemList()}</ItemList>
       <WardWrapper>
-        <RoundSquareImage
-          width={22}
-          height={22}
-          src={ward.imageUrl}
-          alt="와드"
-        />
+        <UsedItem item={ward} tooltipContent={TOOLTIP_CONTENT} />
       </WardWrapper>
     </Container>
   );
