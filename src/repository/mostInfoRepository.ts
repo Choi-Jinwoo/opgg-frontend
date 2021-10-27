@@ -1,11 +1,11 @@
-import { MostChampionAttributes } from '@src/models/domains/MostChampion';
-import { RecentChampionAttributes } from '@src/models/domains/RecentChampion';
+import { MostChampionAttrs } from '@src/models/domains/MostChampion';
+import { RecentChampionAttrs } from '@src/models/domains/RecentChampion';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 
 type FetchMostInfoResponse = {
-  champions: MostChampionAttributes[];
-  recentWinRate: RecentChampionAttributes[];
+  champions: MostChampionAttrs[];
+  recentWinRate: RecentChampionAttrs[];
 };
 
 class MostInfoRepository {

@@ -1,15 +1,15 @@
-import { ChampionAttributes } from '@src/models/domains/UsedChampion';
-import { GameAttributes, GameTeam } from '@src/models/domains/Game';
-import { SummonerMatchSummaryAttributes } from '@src/models/domains/SummonerMatchSummary';
-import { SummonerPositionAttributes } from '@src/models/domains/SummonerPosition';
+import { GameAttrs, GameTeam } from '@src/models/domains/Game';
+import { SummonerMatchSummaryAttrs } from '@src/models/domains/SummonerMatchSummary';
+import { SummonerPositionAttrs } from '@src/models/domains/SummonerPosition';
+import { UsedChampionAttrs } from '@src/models/domains/UsedChampion';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 
 type FetchMatchListResponse = {
-  games: GameAttributes[];
-  champions: ChampionAttributes[];
-  summary: SummonerMatchSummaryAttributes;
-  positions: SummonerPositionAttributes[];
+  games: GameAttrs[];
+  champions: UsedChampionAttrs[];
+  summary: SummonerMatchSummaryAttrs;
+  positions: SummonerPositionAttrs[];
 };
 
 type FetchMatchDetailResponse = {

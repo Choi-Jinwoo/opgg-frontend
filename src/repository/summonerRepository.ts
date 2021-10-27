@@ -1,9 +1,9 @@
-import { SummonerAttributes } from '@src/models/domains/Summoner';
+import { SummonerAttrs } from '@src/models/domains/Summoner';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 
 type FetchSummonerResponse = {
-  summoner: SummonerAttributes;
+  summoner: SummonerAttrs;
 };
 
 class SummonerRepository {
