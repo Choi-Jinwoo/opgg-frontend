@@ -44,14 +44,35 @@ class MostChampion extends MostChampionAttributes implements KDA, WinRate {
     return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
+  get avgKills(): number {
+    return Math.round((this.kills / this.games) * 10) / 10;
+  }
+
+  get avgDeaths(): number {
+    return Math.round((this.deaths / this.games) * 10) / 10;
+  }
+
+  get avgAssists(): number {
+    return Math.round((this.assists / this.games) * 10) / 10;
+  }
+
+  /**
+   * @deprecated
+   */
   get killsAvg(): string {
     return (this.kills / this.games).toFixed(1);
   }
 
+  /**
+   * @deprecated
+   */
   get deathsAvg(): string {
     return (this.deaths / this.games).toFixed(1);
   }
 
+  /**
+   * @deprecated
+   */
   get assistsAvg(): string {
     return (this.assists / this.games).toFixed(1);
   }
