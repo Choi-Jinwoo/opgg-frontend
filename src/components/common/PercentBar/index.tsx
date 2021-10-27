@@ -17,15 +17,15 @@ const PercentBar: React.FC<Props> = ({ dataA, dataB, width }) => {
   const rate = width / (dataA.value + dataB.value);
 
   const dataABarItem = (
-    <BarITem width={dataA.value * rate} bgColor={dataA.color} align="right">
+    <BarItem width={dataA.value * rate} bgColor={dataA.color} align="left">
       {dataA.label}
-    </BarITem>
+    </BarItem>
   );
 
   const dataBBarItem = (
-    <BarITem width={dataB.value * rate} bgColor={dataB.color} align="right">
+    <BarItem width={dataB.value * rate} bgColor={dataB.color} align="right">
       {dataB.label}
-    </BarITem>
+    </BarItem>
   );
 
   return (
@@ -54,7 +54,7 @@ type BarItemProps = {
   align: 'left' | 'right';
 };
 
-const BarITem = styled.div<BarItemProps>`
+const BarItem = styled.div<BarItemProps>`
   width: ${(props) => props.width}px;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.theme.colors.white};
@@ -64,6 +64,7 @@ const BarITem = styled.div<BarItemProps>`
   justify-content: ${(props) =>
     props.align === 'left' ? 'flex-start' : 'flex-end'};
   padding: 0px 4px;
+  white-space: nowrap;
 `;
 
 export default PercentBar;
