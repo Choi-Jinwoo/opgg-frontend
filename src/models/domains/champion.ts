@@ -1,7 +1,9 @@
+import KDACalculator from '@src/lib/Calculator/KDACalculator';
+import WinRateCalculator from '@src/lib/Calculator/WinRateCalculator';
 import KDA from '../KDA';
 import WinRate from '../WinRate';
 
-class ChampionAttributes {
+export class ChampionAttributes {
   id: number;
   key: string;
   name: string;
@@ -32,10 +34,24 @@ class Champion extends ChampionAttributes implements KDA, WinRate {
     return new Champion(champion);
   }
 
-  get kdaRate(): number {}
+  constructor(champion: ChampionAttributes) {
+    super(champion);
+  }
+
+  get winningRate() {
+    return '0';
+  }
+
+  get kda() {
+    return '0';
+  }
+
+  get kdaRate(): number {
+    return new KDACalculator(this.kills, this.deaths, this.assists).calculate();
+  }
 
   get winRate(): number {
-    throw new Error('Method not implemented.');
+    return new WinRateCalculator(this.wins, this.games).calculate();
   }
 }
 
