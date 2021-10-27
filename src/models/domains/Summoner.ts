@@ -1,6 +1,29 @@
-import TierRank from './TierRank';
+type LadderRank = {
+  rank: number;
+  rankPercentOfTop: number;
+};
 
-export class SummonerAttributes {
+type League = {
+  hasResult: boolean;
+  losses: number;
+  wins: number;
+  tierRank: TierRank;
+};
+
+type TierRank = {
+  division: string;
+  imageUrl: string;
+  lp: number;
+  name: string;
+  season: number;
+  shortString: string;
+  string: string;
+  tier: string;
+  tierDivision: string;
+  tierRankPoint: number;
+};
+
+export type SummonerAttrs = {
   name: string;
   level: number;
   previousTiers: TierRank[];
@@ -8,18 +31,26 @@ export class SummonerAttributes {
   profileBorderImageUrl: string;
   profileImageUrl: string;
   url: string;
-  ladderRank: {
-    rank: number;
-    rankPercentOfTop: number;
-  };
-  leagues: {
-    hasResults: boolean;
-    losses: number;
-    wins: number;
-    tierRank: TierRank;
-  }[];
+  ladderRank: LadderRank;
+  leagues: League[];
+};
 
-  constructor(summoner: SummonerAttributes) {
+class Summoner {
+  name: string;
+  level: number;
+  previousTiers: TierRank[];
+  profileBackgroundImageUrl: string;
+  profileBorderImageUrl: string;
+  profileImageUrl: string;
+  url: string;
+  ladderRank: LadderRank;
+  leagues: League[];
+
+  static from(summoner: SummonerAttrs): Summoner {
+    return new Summoner(summoner);
+  }
+
+  constructor(summoner: SummonerAttrs) {
     this.name = summoner.name;
     this.level = summoner.level;
     this.profileBackgroundImageUrl = summoner.profileBackgroundImageUrl;
@@ -29,19 +60,6 @@ export class SummonerAttributes {
     this.url = summoner.url;
     this.ladderRank = summoner.ladderRank;
     this.leagues = summoner.leagues;
-  }
-}
-
-class Summoner extends SummonerAttributes {
-  static from(summoner: SummonerAttributes): Summoner {
-    summoner.previousTiers = summoner.previousTiers.map((tier) =>
-      TierRank.from(tier),
-    );
-    summoner.leagues = summoner.leagues.map((league) => ({
-      ...league,
-      tierRank: TierRank.from(league.tierRank),
-    }));
-    return new Summoner(summoner);
   }
 }
 

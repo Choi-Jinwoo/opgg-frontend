@@ -1,17 +1,6 @@
+import KDACalculator from '@src/lib/Calculator/KDACalculator';
 import Time from '@src/utils/time';
-
-export type GameChampion = {
-  imageUrl: string;
-  level: number;
-};
-
-export type GameSpell = {
-  imageUrl: string;
-};
-
-export type GameItem = {
-  imageUrl: string;
-};
+import KDA from '../KDA';
 
 type GeneralStats = {
   kill: number;
@@ -32,6 +21,24 @@ type WardStats = {
   visionWardsBought: number;
 };
 
+export type GameChampion = {
+  imageUrl: string;
+  level: number;
+};
+
+export type GameSpell = {
+  imageUrl: string;
+};
+
+export type GameItem = {
+  imageUrl: string;
+};
+
+export type GameStats = {
+  general: GeneralStats;
+  ward: WardStats;
+};
+
 export type GamePlayer = {
   champion: GameChampion;
   summonerId: string;
@@ -50,22 +57,36 @@ export enum GameTypes {
   RANDOM = '무작위 총력전',
 }
 
-export class GameAttributes {
+export type GameAttrs = {
+  gameId: string;
   champion: GameChampion;
   spells: GameSpell[];
   items: GameItem[];
-  gameId: string;
   createDate: number;
   gameLength: number;
   gameType: GameTypes;
-  stats: {
-    general: GeneralStats;
-    ward: WardStats;
-  };
+  stats: GameStats;
+  peak: string[];
+  isWin: boolean;
+};
+
+class Game implements KDA {
+  gameId: string;
+  champion: GameChampion;
+  spells: GameSpell[];
+  items: GameItem[];
+  createDate: number;
+  gameLength: number;
+  gameType: GameTypes;
+  stats: GameStats;
   peak: string[];
   isWin: boolean;
 
-  constructor(game: GameAttributes) {
+  static from(game: GameAttrs): Game {
+    return new Game(game);
+  }
+
+  constructor(game: GameAttrs) {
     this.champion = game.champion;
     this.spells = game.spells;
     this.items = game.items;
@@ -77,24 +98,19 @@ export class GameAttributes {
     this.peak = game.peak;
     this.isWin = game.isWin;
   }
-}
 
-class Game extends GameAttributes {
-  static from(game: GameAttributes): Game {
-    return new Game(game);
-  }
-
-  get kda(): string {
+  get kdaRate(): number {
     const { kill, death, assist } = this.stats.general;
-    if (death === 0) return 'Perfect';
 
-    return ((kill + assist) / death).toFixed(2);
+    return new KDACalculator(kill, death, assist).calculate();
   }
 
+  // TODO: 이름 변경 필요
   get relativeTime(): string {
     return new Time(this.createDate * 1000).getRelativeString(Date.now());
   }
 
+  // TODO: 이름 변경 필요
   get formattedGameLength(): string {
     return new Time(this.gameLength * 1000).format();
   }
