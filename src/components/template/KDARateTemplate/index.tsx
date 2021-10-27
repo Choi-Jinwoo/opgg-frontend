@@ -23,7 +23,7 @@ const KDARateTemplate: React.FC<Props> = ({ kdaRate }) => {
 };
 
 const Container = styled.span`
-  colo: ${(props) => props.color};
+  color: ${(props) => props.color};
 `;
 
 export default KDARateTemplate;

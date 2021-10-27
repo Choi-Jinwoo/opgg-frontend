@@ -15,7 +15,7 @@ const WinRateTemplate: React.FC<Props> = ({ winRate }) => {
 };
 
 const Container = styled.span`
-  colo: ${(props) => props.color};
+  color: ${(props) => props.color};
 `;
 
 export default WinRateTemplate;
