@@ -8,6 +8,8 @@ class KDACalculator implements Calculator {
   ) {}
 
   calculate(): number {
+    if (this.deaths === 0) return 0;
+
     return Math.round((this.kills + this.assists) / this.deaths) / 100;
   }
 }
