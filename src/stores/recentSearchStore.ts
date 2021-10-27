@@ -22,7 +22,8 @@ class RecentSearchStore {
   }
 
   @action
-  remove(index: number) {
+  remove(keyword: string) {
+    const index = this.searchKeywords.findIndex((item) => item === keyword);
     this.searchKeywords.splice(index, 1);
     recentSearchStorage.save(this.searchKeywords);
   }
