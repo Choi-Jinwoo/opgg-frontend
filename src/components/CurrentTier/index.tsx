@@ -2,12 +2,13 @@ import summonerStore from '@src/stores/summonerStore';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
+import CurrentTierSkeletonUI from './CurrentTierSkeletonUI';
 import TierBox from './TierBox';
 const CurrentTier = () => {
   const { summoner } = summonerStore;
 
   if (summoner === null) {
-    return <div>없음</div>;
+    return <CurrentTierSkeletonUI />;
   }
 
   const [soloRank, freeRank] = summoner.leagues;

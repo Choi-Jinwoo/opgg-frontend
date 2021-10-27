@@ -7,7 +7,7 @@ import MostChampionItem from './MostChampionItem';
 const MostChampions: React.FC = () => {
   const { mostChampions } = mostInfoStore;
   if (mostChampions === null) {
-    return <div>없음</div>;
+    return null;
   }
 
   const mostChampionItems = mostChampions.map((champion, index) => (

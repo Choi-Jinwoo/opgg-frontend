@@ -8,7 +8,7 @@ const RecentChampions: React.FC = () => {
   const { recentChampions } = mostInfoStore;
 
   if (recentChampions === null) {
-    return <div>없음</div>;
+    return null;
   }
 
   const recentChampionItems = recentChampions.map((recentChampion, index) => (

@@ -7,12 +7,12 @@ import matchStore from '@src/stores/matchStore';
 import { observer } from 'mobx-react';
 import KDATemplate from '@src/components/template/KDATemplate';
 import KDARateTemplate from '@src/components/template/KDARateTemplate';
+import SummaryChartSkeletonUI from './SummaryChartSkeletonUI';
 
 const SummaryChart: React.FC = () => {
   const { summonerMatchSummary } = matchStore;
   if (summonerMatchSummary === null) {
-    // TODO: 로딩 적용
-    return <div>없음</div>;
+    return <SummaryChartSkeletonUI />;
   }
 
   const { wins, losses, winRate, games, kills, deaths, assists, kdaRate } =

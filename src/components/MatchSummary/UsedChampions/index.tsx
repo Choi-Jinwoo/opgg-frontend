@@ -4,6 +4,7 @@ import matchStore from '@src/stores/matchStore';
 import UsedChampionItem from './UsedChampionItem';
 import styled from 'styled-components';
 import NoChampionData from './NoChampionData';
+import UsedChampionsSkeletonUI from './UsedChampionsSkeletonUI';
 
 const MAX_MOST_USED_CHAMPIONS = 3;
 
@@ -11,7 +12,7 @@ const UsedChampions: React.FC = () => {
   const { mostChampions } = matchStore;
 
   if (mostChampions === null) {
-    return <div>없음</div>;
+    return <UsedChampionsSkeletonUI />;
   }
 
   const mostUsedChampionItems = mostChampions.map((champion) => (

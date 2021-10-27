@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import styled from 'styled-components';
 import MatchItem from './MatchItem';
+import MatchListSkeletonUI from './MatchListSkeletonUI';
 
 const MATCH_FILTER_MAP_TO_GAME_TYPE: {
   [key in MatchFilter]: null | GameTypes;
@@ -17,8 +18,7 @@ const MatchList: React.FC = () => {
   const { games, currentFilter } = matchStore;
 
   if (games === null) {
-    // TODO: 없음 처리
-    return <div>없음</div>;
+    return <MatchListSkeletonUI />;
   }
 
   const filteredGames = games.filter(

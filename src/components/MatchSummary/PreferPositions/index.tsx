@@ -5,13 +5,13 @@ import matchStore from '@src/stores/matchStore';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
 import PreferPositionItem from './PreferPositionItem';
+import PreferPositionsSkeletonUI from './PreferPositionsSkeletonUI';
 
 const PreferPositions: React.FC = () => {
   const { summonerPositions } = matchStore;
 
-  // TODO: 없음 설정
   if (summonerPositions === null) {
-    return <div>없음</div>;
+    return <PreferPositionsSkeletonUI />;
   }
 
   const totalGames = summonerPositions.reduce(

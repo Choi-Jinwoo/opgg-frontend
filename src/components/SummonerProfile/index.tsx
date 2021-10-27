@@ -8,12 +8,13 @@ import theme from '@src/styles/theme';
 import summonerStore from '@src/stores/summonerStore';
 import Heading from '../common/Heading';
 import Emphasize from '../common/Emphasize';
+import SummonerProfileSkeletonUI from './SummonerProfileSkeletonUI';
 
 const SummonerProfile: React.FC = () => {
   const { summoner } = summonerStore;
 
   if (summoner === null) {
-    return <SummonerNotFound>소환사 없음</SummonerNotFound>;
+    return <SummonerProfileSkeletonUI />;
   }
 
   const {
@@ -69,7 +70,5 @@ const SummonerMainProfileWrapper = styled.div`
 const SummonerInfo = styled.div`
   margin-left: 32px;
 `;
-
-const SummonerNotFound = styled.div``;
 
 export default observer(SummonerProfile);
