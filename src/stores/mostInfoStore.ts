@@ -16,8 +16,12 @@ class MostInfoStore {
     const { data } = await mostInfoRepository.fetchMostInfo(summonerName);
 
     runInAction(() => {
-      this.mostChampions = data.champions.map(MostChampion.from);
-      this.recentChampions = data.recentWinRate.map(RecentChampion.from);
+      this.mostChampions = data.champions
+        .map(MostChampion.from)
+        .sort((a, b) => b.games - a.games);
+      this.recentChampions = data.recentWinRate
+        .map(RecentChampion.from)
+        .sort((a, b) => b.games - a.games);
     });
   }
 }

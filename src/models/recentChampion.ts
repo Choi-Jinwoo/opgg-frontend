@@ -24,6 +24,10 @@ class RecentChampion extends RecentChampionAttributes {
   get winningRate(): string {
     return ((this.wins / (this.wins + this.losses)) * 100).toFixed(0);
   }
+
+  get games(): number {
+    return this.wins + this.losses;
+  }
 }
 
 export default RecentChampion;
