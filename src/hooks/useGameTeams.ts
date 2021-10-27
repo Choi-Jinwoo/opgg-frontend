@@ -1,7 +1,7 @@
-import query from '@src/utils/query';
 import { useEffect, useState } from 'react';
 import { GameTeam } from '@src/models/domains/Game';
 import matchRepository from '@src/repository/matchRepository';
+import summonerStore from '@src/stores/summonerStore';
 
 type UseGameTeamsReturns = [GameTeam[] | null];
 
@@ -9,13 +9,14 @@ const useGameTeams = (gameId: string): UseGameTeamsReturns => {
   const [teams, setTeams] = useState<GameTeam[] | null>(null);
 
   useEffect(() => {
-    const summoner = query.get('summoner', location.search);
-    if (summoner === null) return;
+    const { summonerName } = summonerStore;
+    if (summonerName === null) return;
 
     matchRepository
-      .fetchMatchDetails(summoner, gameId)
+      .fetchMatchDetails(summonerName, gameId)
       .then(({ data }) => setTeams(data.teams));
-  }, [gameId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameId, summonerStore.summonerName]);
 
   return [teams];
 };

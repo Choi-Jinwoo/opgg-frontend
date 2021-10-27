@@ -1,19 +1,15 @@
 import { useEffect } from 'react';
-import query from '@src/utils/query';
 import mostInfoStore from '@src/stores/mostInfoStore';
-import { useLocation } from 'react-router-dom';
+import summonerStore from '@src/stores/summonerStore';
 
 const useMostInfo = (): void => {
-  const { search } = useLocation();
-
   useEffect(() => {
-    const summonerName = query.get('summoner', search);
-
-    // TODO: querystring 없을 경우 처리
+    const { summonerName } = summonerStore;
     if (summonerName === null) return;
 
     mostInfoStore.fetchMostInfo(summonerName);
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [summonerStore.summonerName]);
 };
 
 export default useMostInfo;

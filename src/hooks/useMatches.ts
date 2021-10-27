@@ -1,18 +1,15 @@
 import matchStore from '@src/stores/matchStore';
 import { useEffect } from 'react';
-import query from '@src/utils/query';
-import { useLocation } from 'react-router-dom';
+import summonerStore from '@src/stores/summonerStore';
 
 const useMatches = (): void => {
-  const { search } = useLocation();
-
   useEffect(() => {
-    const summonerName = query.get('summoner', search);
-
+    const { summonerName } = summonerStore;
     if (summonerName === null) return;
 
     matchStore.fetchMatches(summonerName);
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [summonerStore.summonerName]);
 };
 
 export default useMatches;
