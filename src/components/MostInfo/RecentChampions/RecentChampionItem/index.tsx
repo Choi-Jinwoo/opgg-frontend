@@ -11,27 +11,29 @@ type Props = {
 };
 
 const RecentChampionItem: React.FC<Props> = ({ champion }) => {
-  const { imageUrl, winningRate, wins, losses, name } = champion;
+  const { imageUrl, winRate, wins, losses, name } = champion;
 
   return (
     <Container>
       <RoundImage width={32} src={imageUrl} alt={name} />
       <ChampionName>{name}</ChampionName>
       <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
-        {winningRate}%
+        {winRate.toFixed(0)}%
       </Text>
       <PercentBar
         width={123}
-        dataA={{
-          value: wins,
-          color: theme.colors.blue,
-          label: `${wins}승`,
-        }}
-        dataB={{
-          value: losses,
-          color: theme.colors.lightRed,
-          label: `${losses}패`,
-        }}
+        items={[
+          {
+            value: wins,
+            color: theme.colors.blue,
+            label: `${wins}승`,
+          },
+          {
+            value: losses,
+            color: theme.colors.lightRed,
+            label: `${losses}패`,
+          },
+        ]}
       />
     </Container>
   );

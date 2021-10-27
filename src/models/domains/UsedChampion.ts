@@ -43,16 +43,16 @@ class UsedChampion extends Champion implements KDA, WinRate {
     return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
-  get avgKills(): string {
-    return (this.kills / this.games).toFixed(1);
+  get avgKills(): number {
+    return this.kills / this.games;
   }
 
-  get avgDeaths(): string {
-    return (this.deaths / this.games).toFixed(1);
+  get avgDeaths(): number {
+    return this.deaths / this.games;
   }
 
-  get avgAssists(): string {
-    return (this.assists / this.games).toFixed(1);
+  get avgAssists(): number {
+    return this.assists / this.games;
   }
 }
 
