@@ -6,11 +6,13 @@ import MostInfo from '@src/components/MostInfo';
 import SummonerProfile from '@src/components/SummonerProfile';
 import useMatches from '@src/hooks/useMatches';
 import useMostInfo from '@src/hooks/useMostInfo';
+import useSummonerName from '@src/hooks/useSummonerName';
 import useSummonerProfile from '@src/hooks/useSummonerProfile';
 import React from 'react';
 import styled from 'styled-components';
 
 const SummonerPage: React.FC = () => {
+  useSummonerName();
   useSummonerProfile();
   useMatches();
   useMostInfo();
