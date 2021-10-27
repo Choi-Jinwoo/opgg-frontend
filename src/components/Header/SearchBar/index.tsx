@@ -14,10 +14,8 @@ const SEARCH_BAR_ID = 'header-search-bar';
 const SearchBar: React.FC = () => {
   const history = useHistory();
   const [keyword, onKeywordChange, clearKeyword] = useInput();
-  const [isDropDownVisible, makeDropDownVisible] = useDropDown(
-    false,
-    `#${SEARCH_BAR_ID}`,
-  );
+  const [isDropDownVisible, makeDropDownVisible, makeDropDownInvisible] =
+    useDropDown(false, `#${SEARCH_BAR_ID}`);
 
   const onSearchInputFocus = () => {
     makeDropDownVisible();
@@ -28,6 +26,7 @@ const SearchBar: React.FC = () => {
 
     recentSearchStore.add(keyword);
     clearKeyword();
+    makeDropDownInvisible();
 
     history.push(`?summoner=${keyword}`);
   };

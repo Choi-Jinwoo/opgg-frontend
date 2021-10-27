@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type UseDropDownReturns = [boolean, () => void];
+type UseDropDownReturns = [boolean, () => void, () => void];
 
 const useDropDown = (
   defaultVisible: boolean,
@@ -25,7 +25,11 @@ const useDropDown = (
     setIsVisible(true);
   };
 
-  return [isVisible, makeVisible];
+  const makeInvisible = () => {
+    setIsVisible(false);
+  };
+
+  return [isVisible, makeVisible, makeInvisible];
 };
 
 export default useDropDown;
