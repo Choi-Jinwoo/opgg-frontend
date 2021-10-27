@@ -4,6 +4,9 @@ import RoundImage from '@src/components/common/RoundImage';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
 import MostChampion from '@src/models/mostChampion';
+import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
+import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
+import WinningRateColorCondition from '@src/lib/conditionalColor/WinningRateColorCondition';
 
 type Props = {
   champion: MostChampion;
@@ -39,7 +42,9 @@ const MostChampionItem: React.FC<Props> = ({ champion }) => {
           color={theme.colors.gray7}
           fontWeight="bold"
         >
-          {kda}:1 평점
+          <ConditionalColorFont condition={kdaColorCondition} value={kda}>
+            {kda}:1 평점
+          </ConditionalColorFont>
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
           {killsAvg} / {deathsAvg} / {assistsAvg}
@@ -52,7 +57,12 @@ const MostChampionItem: React.FC<Props> = ({ champion }) => {
           color={theme.colors.gray7}
           fontWeight="bold"
         >
-          {winningRate}%
+          <ConditionalColorFont
+            condition={WinningRateColorCondition}
+            value={winningRate}
+          >
+            {winningRate}%
+          </ConditionalColorFont>
         </Text>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
           {games}게임
@@ -86,7 +96,7 @@ const ChampionName = styled.span`
   color: ${(props) => props.theme.colors.gray7};
   font-weight: bold;
   overflow: hidden;
-  width: 68px;
+  width: 64px;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
