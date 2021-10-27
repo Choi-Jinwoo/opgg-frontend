@@ -1,7 +1,7 @@
 import query from '@src/utils/query';
 import { useEffect, useState } from 'react';
-import matchRepository from '@src/repository/match';
 import { GameTeam } from '@src/models/domains/Game';
+import matchRepository from '@src/repository/matchRepository';
 
 type UseGameTeamsReturns = [GameTeam[] | null];
 

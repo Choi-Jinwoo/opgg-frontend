@@ -16,7 +16,7 @@ const TierBadge: React.FC<Props> = ({ tier }) => {
         fontSize={theme.fontSizes.tiny}
         fontWeight="bold"
       >
-        S{tier}
+        S{tier.season}
       </Text>
       <Text
         color={theme.colors.gray7}
