@@ -21,7 +21,7 @@ class UsedChampion extends Champion implements KDA, WinRate {
   wins: number;
   losses: number;
 
-  static from(champion: UsedChampionAttrs): Champion {
+  static from(champion: UsedChampionAttrs): UsedChampion {
     return new UsedChampion(champion);
   }
 

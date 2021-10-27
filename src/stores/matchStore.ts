@@ -1,18 +1,18 @@
-import Champion from '@src/models/domains/UsedChampion';
-import { action, makeAutoObservable, observable, runInAction } from 'mobx';
-import matchRepository from '@src/repository/match';
+import Game from '@src/models/domains/Game';
 import SummonerMatchSummary from '@src/models/domains/SummonerMatchSummary';
 import SummonerPosition from '@src/models/domains/SummonerPosition';
-import Game from '@src/models/domains/Game';
+import UsedChampion from '@src/models/domains/UsedChampion';
+import matchRepository from '@src/repository/matchRepository';
+import { action, makeAutoObservable, observable, runInAction } from 'mobx';
 
-export type FilterTypes = 'all' | 'solo' | 'free';
+export type MatchFilter = 'all' | 'solo' | 'free';
 
 class MatchStore {
   @observable
-  filterType: FilterTypes = 'all';
+  currentFilter: MatchFilter = 'all';
 
   @observable
-  mostChampions: Champion[] | null = null;
+  mostChampions: UsedChampion[] | null = null;
 
   @observable
   summonerMatchSummary: SummonerMatchSummary | null = null;
@@ -32,15 +32,15 @@ class MatchStore {
     const { data } = await matchRepository.fetchMatches(summonerName);
 
     runInAction(() => {
-      this.mostChampions = data.champions.map(Champion.from);
+      this.mostChampions = data.champions.map(UsedChampion.from);
       this.summonerMatchSummary = SummonerMatchSummary.from(data.summary);
       this.summonerPositions = data.positions.map(SummonerPosition.from);
       this.games = data.games.map(Game.from);
     });
   }
 
-  selectFilter(type: FilterTypes) {
-    this.filterType = type;
+  selectFilter(filter: MatchFilter) {
+    this.currentFilter = filter;
   }
 }
 
