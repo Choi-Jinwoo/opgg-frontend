@@ -1,4 +1,4 @@
-import TierRank from './tierRank';
+import TierRank from './TierRank';
 
 export class SummonerAttributes {
   name: string;

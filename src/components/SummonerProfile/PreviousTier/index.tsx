@@ -1,4 +1,4 @@
-import TierRank from '@src/models/domains/tierRank';
+import TierRank from '@src/models/domains/TierRank';
 import React from 'react';
 import styled from 'styled-components';
 import TierBadge from '../TierBadge';

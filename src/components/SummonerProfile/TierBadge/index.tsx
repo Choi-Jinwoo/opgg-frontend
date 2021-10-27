@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TierRank from '@src/models/domains/tierRank';
+import TierRank from '@src/models/domains/TierRank';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
 
