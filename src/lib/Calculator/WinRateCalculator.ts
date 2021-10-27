@@ -6,7 +6,7 @@ class WinRateCalculator implements Calculator {
   calculate(): number {
     if (this.games === 0) return 0;
 
-    return Math.round((this.wins / this.games) * 100);
+    return (this.wins / this.games) * 100;
   }
 }
 
