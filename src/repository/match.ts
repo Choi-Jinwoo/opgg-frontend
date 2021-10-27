@@ -1,4 +1,4 @@
-import { ChampionAttributes } from '@src/models/domains/Champion';
+import { ChampionAttributes } from '@src/models/domains/UsedChampion';
 import { GameAttributes, GameTeam } from '@src/models/domains/Game';
 import { SummonerMatchSummaryAttributes } from '@src/models/domains/SummonerMatchSummary';
 import { SummonerPositionAttributes } from '@src/models/domains/SummonerPosition';

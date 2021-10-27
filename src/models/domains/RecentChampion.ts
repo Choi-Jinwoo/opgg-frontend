@@ -1,28 +1,28 @@
-export class RecentChampionAttributes {
-  id: number;
-  key: string;
-  name: string;
-  imageUrl: string;
+import WinRateCalculator from '@src/lib/Calculator/WinRateCalculator';
+import WinRate from '../WinRate';
+import Champion, { ChampionAttrs } from './Champion';
+
+export type RecentChampionAttrs = ChampionAttrs & {
+  wins: number;
+  losses: number;
+};
+
+class RecentChampion extends Champion implements WinRate {
   wins: number;
   losses: number;
 
-  constructor(recentChampion: RecentChampionAttributes) {
-    this.id = recentChampion.id;
-    this.key = recentChampion.key;
-    this.name = recentChampion.name;
-    this.imageUrl = recentChampion.imageUrl;
-    this.wins = recentChampion.wins;
-    this.losses = recentChampion.losses;
-  }
-}
-
-class RecentChampion extends RecentChampionAttributes {
-  static from(recentChampion: RecentChampionAttributes): RecentChampion {
+  static from(recentChampion: RecentChampionAttrs): RecentChampion {
     return new RecentChampion(recentChampion);
   }
 
-  get winningRate(): string {
-    return ((this.wins / (this.wins + this.losses)) * 100).toFixed(0);
+  constructor(recentChampion: RecentChampionAttrs) {
+    super(recentChampion);
+    this.wins = recentChampion.wins;
+    this.losses = recentChampion.losses;
+  }
+
+  get winRate(): number {
+    return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
   get games(): number {

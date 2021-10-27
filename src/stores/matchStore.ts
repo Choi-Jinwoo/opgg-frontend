@@ -1,4 +1,4 @@
-import Champion from '@src/models/domains/Champion';
+import Champion from '@src/models/domains/UsedChampion';
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
 import matchRepository from '@src/repository/match';
 import SummonerMatchSummary from '@src/models/domains/SummonerMatchSummary';
