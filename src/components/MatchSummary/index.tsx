@@ -1,41 +1,41 @@
-import matchStore, { FilterTypes } from '@src/stores/matchStore';
+import matchStore, { MatchFilter } from '@src/stores/matchStore';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import MostUsedChampions from './MostUsedChampions';
+import MostUsedChampions from './UsedChampions';
 import PreferPositions from './PreferPositions';
 import SummaryChart from './SummaryChart';
 
 const FILTER: {
-  key: FilterTypes;
+  filter: MatchFilter;
   label: string;
 }[] = [
   {
-    key: 'all',
+    filter: 'all',
     label: '전체',
   },
   {
-    key: 'solo',
+    filter: 'solo',
     label: '솔로게임',
   },
   {
-    key: 'free',
+    filter: 'free',
     label: '자유랭크',
   },
 ];
 
 const MatchSummary: React.FC = () => {
-  const { filterType } = matchStore;
+  const { currentFilter } = matchStore;
 
-  const makeFilterClickHandler = (key: FilterTypes) => () => {
-    matchStore.selectFilter(key);
+  const makeFilterClickHandler = (filter: MatchFilter) => () => {
+    matchStore.changeFilter(filter);
   };
 
-  const filters = FILTER.map(({ key, label }, index) => (
+  const filterItems = FILTER.map(({ filter, label }, index) => (
     <FilterItem
       key={index}
-      isSelected={key === filterType}
-      onClick={makeFilterClickHandler(key)}
+      isSelected={filter === currentFilter}
+      onClick={makeFilterClickHandler(filter)}
     >
       {label}
     </FilterItem>
@@ -44,7 +44,7 @@ const MatchSummary: React.FC = () => {
   return (
     <Container>
       <FilterWrapper>
-        <Filters>{filters}</Filters>
+        <FilterList>{filterItems}</FilterList>
       </FilterWrapper>
 
       <SummaryWrapper>
@@ -77,7 +77,7 @@ const FilterWrapper = styled.div`
   padding: 0px 20px;
 `;
 
-const Filters = styled.ul`
+const FilterList = styled.ul`
   display: flex;
   algin-items: center;
   & > * + * {

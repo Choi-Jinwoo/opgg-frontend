@@ -39,7 +39,7 @@ class MatchStore {
     });
   }
 
-  selectFilter(filter: MatchFilter) {
+  changeFilter(filter: MatchFilter) {
     this.currentFilter = filter;
   }
 }
