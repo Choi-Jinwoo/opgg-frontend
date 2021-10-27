@@ -1,5 +1,5 @@
 interface WinRate {
-  get winRate(): string;
+  get winRate(): number;
 }
 
 export default WinRate;

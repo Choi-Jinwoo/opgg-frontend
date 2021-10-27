@@ -21,8 +21,8 @@ class RecentChampion extends Champion implements WinRate {
     this.losses = recentChampion.losses;
   }
 
-  get winRate(): string {
-    return new WinRateCalculator(this.wins, this.games).calculate().toFixed(0);
+  get winRate(): number {
+    return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
   get games(): number {

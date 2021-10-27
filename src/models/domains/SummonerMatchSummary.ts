@@ -36,14 +36,12 @@ class SummonerMatchSummary implements KDA, WinRate {
     return this.wins + this.losses;
   }
 
-  get winRate(): string {
-    return new WinRateCalculator(this.wins, this.games).calculate().toFixed(0);
+  get winRate(): number {
+    return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
-  get kdaRate(): string {
-    return new KDACalculator(this.kills, this.deaths, this.assists)
-      .calculate()
-      .toFixed(2);
+  get kdaRate(): number {
+    return new KDACalculator(this.kills, this.deaths, this.assists).calculate();
   }
 }
 
