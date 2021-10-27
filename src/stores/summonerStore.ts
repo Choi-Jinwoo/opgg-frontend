@@ -1,8 +1,11 @@
 import Summoner from '@src/models/domains/Summoner';
+import summonerRepository from '@src/repository/summonerRepository';
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
-import summonerRepository from '@src/repository/summoner';
 
 class SummonerStore {
+  @observable
+  summonerName: string | null = null;
+
   @observable
   summoner: Summoner | null = null;
 
