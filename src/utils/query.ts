@@ -1,6 +1,6 @@
 class Querystring {
-  get(key: string): string | null {
-    const query = new URLSearchParams(location.search);
+  get(key: string, search: string): string | null {
+    const query = new URLSearchParams(search);
 
     return query.get(key);
   }
