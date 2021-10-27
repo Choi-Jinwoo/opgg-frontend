@@ -38,11 +38,17 @@ class Champion extends ChampionAttributes implements KDA, WinRate {
     super(champion);
   }
 
-  get winningRate() {
+  /**
+   * @deprecated
+   */
+  get winningRate(): string {
     return '0';
   }
 
-  get kda() {
+  /**
+   * @deprecated
+   */
+  get kda(): string {
     return '0';
   }
 

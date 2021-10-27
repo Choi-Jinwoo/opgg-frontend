@@ -1,46 +1,47 @@
-export class MostChampionAttributes {
-  id: number;
-  key: string;
-  name: string;
-  imageUrl: string;
-  games: number;
-  kills: number;
-  deaths: number;
-  assists: number;
-  wins: number;
-  losses: number;
+import KDACalculator from '@src/lib/Calculator/KDACalculator';
+import WinRateCalculator from '@src/lib/Calculator/WinRateCalculator';
+import KDA from '../KDA';
+import WinRate from '../WinRate';
+import { ChampionAttributes } from './Champion';
+
+export class MostChampionAttributes extends ChampionAttributes {
   cs: number;
   rank: number;
 
   constructor(mostChampion: MostChampionAttributes) {
-    this.id = mostChampion.id;
-    this.key = mostChampion.key;
-    this.name = mostChampion.name;
-    this.imageUrl = mostChampion.imageUrl;
-    this.games = mostChampion.games;
-    this.kills = mostChampion.kills;
-    this.deaths = mostChampion.deaths;
-    this.assists = mostChampion.assists;
-    this.wins = mostChampion.wins;
-    this.losses = mostChampion.losses;
+    super(mostChampion);
     this.cs = mostChampion.cs;
     this.rank = mostChampion.rank;
   }
 }
 
-class MostChampion extends MostChampionAttributes {
+class MostChampion extends MostChampionAttributes implements KDA, WinRate {
   static from(mostChampion: MostChampionAttributes): MostChampion {
     return new MostChampion(mostChampion);
   }
 
+  /**
+   * @deprecated
+   */
   get kda(): string {
     if (this.deaths === 0) return 'Perfect';
 
     return ((this.kills + this.assists) / this.deaths).toFixed(2);
   }
 
+  /**
+   * @deprecated
+   */
   get winningRate(): string {
     return ((this.wins / this.games) * 100).toFixed(0);
+  }
+
+  get kdaRate(): number {
+    return new KDACalculator(this.kills, this.deaths, this.assists).calculate();
+  }
+
+  get winRate(): number {
+    return new WinRateCalculator(this.wins, this.games).calculate();
   }
 
   get killsAvg(): string {
