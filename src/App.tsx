@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SummonerPage from './pages/SummonerPage';
 import GlobalStyles from './styles/GlobalStyles';
 import theme from './styles/theme';
+import HomePage from './pages/HomePage';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = () => {
         <GlobalStyles />
         <BrowserRouter>
           <Switch>
-            <Route path="/" exact component={() => <div>hi</div>} />
+            <Route path="/" exact component={HomePage} />
             <Route path="/summoner" exact component={SummonerPage} />
           </Switch>
         </BrowserRouter>

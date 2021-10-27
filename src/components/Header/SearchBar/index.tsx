@@ -28,7 +28,7 @@ const SearchBar: React.FC = () => {
     clearKeyword();
     makeDropDownInvisible();
 
-    history.push(`?summoner=${keyword}`);
+    history.push(`/summoner?summoner=${keyword}`);
   };
 
   const onSearchClick = () => {

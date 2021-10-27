@@ -1,3 +1,4 @@
+import Layout from '@src/components/common/Layout';
 import CurrentTier from '@src/components/CurrentTier';
 import Header from '@src/components/Header';
 import MatchList from '@src/components/MatchList';
@@ -18,8 +19,7 @@ const SummonerPage: React.FC = () => {
   useMostInfo();
 
   return (
-    <Container>
-      <Header />
+    <Layout>
       <SummonerProfile />
       <MainContent>
         <SideSection>
@@ -32,11 +32,9 @@ const SummonerPage: React.FC = () => {
           <MatchList />
         </MainSection>
       </MainContent>
-    </Container>
+    </Layout>
   );
 };
-
-const Container = styled.div``;
 
 const MainContent = styled.main`
   margin: 0 auto;
