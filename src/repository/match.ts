@@ -1,7 +1,7 @@
-import { ChampionAttributes } from '@src/models/domains/champion';
-import { GameAttributes, GameTeam } from '@src/models/domains/game';
-import { SummonerMatchSummaryAttributes } from '@src/models/domains/summonerMatchSummary';
-import { SummonerPositionAttributes } from '@src/models/domains/summonerPosition';
+import { ChampionAttributes } from '@src/models/domains/Champion';
+import { GameAttributes, GameTeam } from '@src/models/domains/Game';
+import { SummonerMatchSummaryAttributes } from '@src/models/domains/SummonerMatchSummary';
+import { SummonerPositionAttributes } from '@src/models/domains/SummonerPosition';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 

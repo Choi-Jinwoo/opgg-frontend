@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import RoundImage from '@src/components/common/RoundImage';
 import Text from '@src/components/common/Text';
 import theme from '@src/styles/theme';
-import MostChampion from '@src/models/domains/mostChampion';
+import MostChampion from '@src/models/domains/MostChampion';
 import ConditionalColorFont from '@src/components/common/ConditionalColorFont';
 import kdaColorCondition from '@src/lib/conditionalColor/KDAColorCondition';
 import WinningRateColorCondition from '@src/lib/conditionalColor/WinningRateColorCondition';

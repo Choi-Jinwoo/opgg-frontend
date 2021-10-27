@@ -1,4 +1,4 @@
-import { SummonerAttributes } from '@src/models/domains/summoner';
+import { SummonerAttributes } from '@src/models/domains/Summoner';
 import { AxiosResponse } from 'axios';
 import axiosInstance from './axios';
 

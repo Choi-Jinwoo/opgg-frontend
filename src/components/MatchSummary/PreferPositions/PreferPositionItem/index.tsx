@@ -10,7 +10,7 @@ import ADC from '@src/assets/icons/adc-icon.svg';
 import SUP from '@src/assets/icons/sup-icon.svg';
 import SummonerPosition, {
   Positions,
-} from '@src/models/domains/summonerPosition';
+} from '@src/models/domains/SummonerPosition';
 
 const POSITION_META = {
   [Positions.TOP]: {

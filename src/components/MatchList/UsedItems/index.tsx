@@ -1,4 +1,4 @@
-import { GameItem } from '@src/models/domains/game';
+import { GameItem } from '@src/models/domains/Game';
 import React from 'react';
 import styled from 'styled-components';
 import UsedItem from '../UsedItem';

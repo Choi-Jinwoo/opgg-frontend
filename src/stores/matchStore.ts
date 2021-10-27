@@ -1,9 +1,9 @@
-import Champion from '@src/models/domains/champion';
+import Champion from '@src/models/domains/Champion';
 import { action, makeAutoObservable, observable, runInAction } from 'mobx';
 import matchRepository from '@src/repository/match';
-import SummonerMatchSummary from '@src/models/domains/summonerMatchSummary';
-import SummonerPosition from '@src/models/domains/summonerPosition';
-import Game from '@src/models/domains/game';
+import SummonerMatchSummary from '@src/models/domains/SummonerMatchSummary';
+import SummonerPosition from '@src/models/domains/SummonerPosition';
+import Game from '@src/models/domains/Game';
 
 export type FilterTypes = 'all' | 'solo' | 'free';
 

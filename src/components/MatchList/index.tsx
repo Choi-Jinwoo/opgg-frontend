@@ -1,4 +1,4 @@
-import { GameTypes } from '@src/models/domains/game';
+import { GameTypes } from '@src/models/domains/Game';
 import matchStore from '@src/stores/matchStore';
 import { observer } from 'mobx-react';
 import React from 'react';
