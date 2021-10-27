@@ -1,5 +1,5 @@
 interface KDA {
-  get kdaRate(): number;
+  get kdaRate(): string;
 }
 
 export default KDA;

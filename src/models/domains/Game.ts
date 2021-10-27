@@ -99,10 +99,10 @@ class Game implements KDA {
     this.isWin = game.isWin;
   }
 
-  get kdaRate(): number {
+  get kdaRate(): string {
     const { kill, death, assist } = this.stats.general;
 
-    return new KDACalculator(kill, death, assist).calculate();
+    return new KDACalculator(kill, death, assist).calculate().toFixed(2);
   }
 
   // TODO: 이름 변경 필요

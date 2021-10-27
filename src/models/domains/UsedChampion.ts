@@ -35,24 +35,26 @@ class UsedChampion extends Champion implements KDA, WinRate {
     this.losses = usedChampion.losses;
   }
 
-  get kdaRate(): number {
-    return new KDACalculator(this.kills, this.deaths, this.assists).calculate();
+  get kdaRate(): string {
+    return new KDACalculator(this.kills, this.deaths, this.assists)
+      .calculate()
+      .toFixed(2);
   }
 
-  get winRate(): number {
-    return new WinRateCalculator(this.wins, this.games).calculate();
+  get winRate(): string {
+    return new WinRateCalculator(this.wins, this.games).calculate().toFixed(0);
   }
 
-  get avgKills(): number {
-    return Math.round((this.kills / this.games) * 10) / 10;
+  get avgKills(): string {
+    return (this.kills / this.games).toFixed(1);
   }
 
-  get avgDeaths(): number {
-    return Math.round((this.deaths / this.games) * 10) / 10;
+  get avgDeaths(): string {
+    return (this.deaths / this.games).toFixed(1);
   }
 
-  get avgAssists(): number {
-    return Math.round((this.assists / this.games) * 10) / 10;
+  get avgAssists(): string {
+    return (this.assists / this.games).toFixed(1);
   }
 }
 

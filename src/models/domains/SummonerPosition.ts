@@ -36,8 +36,8 @@ class SummonerPosition implements WinRate {
     this.positionName = summonerPosition.positionName;
   }
 
-  get winRate(): number {
-    return new WinRateCalculator(this.wins, this.games).calculate();
+  get winRate(): string {
+    return new WinRateCalculator(this.wins, this.games).calculate().toFixed(0);
   }
 }
 
