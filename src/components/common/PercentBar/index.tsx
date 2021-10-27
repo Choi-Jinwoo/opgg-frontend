@@ -8,32 +8,25 @@ type Item = {
 };
 
 type Props = {
-  dataA: Item;
-  dataB: Item;
+  items: Item[];
   width: number;
 };
 
-const PercentBar: React.FC<Props> = ({ dataA, dataB, width }) => {
-  const rate = width / (dataA.value + dataB.value);
+const PercentBar: React.FC<Props> = ({ items, width }) => {
+  const amount = items.reduce(
+    (previous, current) => previous + current.value,
+    0,
+  );
 
-  const dataABarItem = (
-    <BarItem width={dataA.value * rate} bgColor={dataA.color} align="left">
-      {dataA.label}
+  const rate = amount / items.length;
+
+  const barItems = items.map(({ color, label, value }, index) => (
+    <BarItem key={index} bgColor={color} width={value * rate}>
+      {label}
     </BarItem>
-  );
+  ));
 
-  const dataBBarItem = (
-    <BarItem width={dataB.value * rate} bgColor={dataB.color} align="right">
-      {dataB.label}
-    </BarItem>
-  );
-
-  return (
-    <Container width={width}>
-      {dataABarItem}
-      {dataBBarItem}
-    </Container>
-  );
+  return <Container width={width}>{barItems}</Container>;
 };
 
 type ContainerProps = {
@@ -51,20 +44,26 @@ const Container = styled.div<ContainerProps>`
 type BarItemProps = {
   width: number;
   bgColor: string;
-  align: 'left' | 'right';
 };
 
 const BarItem = styled.div<BarItemProps>`
+  display: flex;
+  align-items: center;
   width: ${(props) => props.width}px;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.theme.colors.white};
   font-size: ${(props) => props.theme.fontSizes.tiny};
-  display: flex;
-  align-items: center;
-  justify-content: ${(props) =>
-    props.align === 'left' ? 'flex-start' : 'flex-end'};
   padding: 0px 4px;
   white-space: nowrap;
+  justify-content: center;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
+  }
 `;
 
 export default PercentBar;
