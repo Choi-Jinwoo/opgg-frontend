@@ -1,3 +1,5 @@
+<div align="center">
+
 ## OP.GG 프론트엔드 과제
 
 ![TypeScript](https://img.shields.io/badge/-TYPESCRIPT-3882D3?style=for-the-badge&logo=typescript&logoColor=ffffff)
@@ -8,6 +10,7 @@
 ![Babel](https://img.shields.io/badge/-Babel-E4C000?style=for-the-badge&logo=babel&logoColor=ffffff)
 ![ESLint](https://img.shields.io/badge/-ESLint-4538BC?style=for-the-badge&logo=ESLint&logoColor=ffffff)
 ![Netlify](https://img.shields.io/badge/-Netlify-2EABB2?style=for-the-badge&logo=Netlify&logoColor=ffffff)
+</div>
 
 ### Live Demo
 
