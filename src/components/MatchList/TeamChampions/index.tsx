@@ -1,14 +1,17 @@
 import React from 'react';
-import { GameTeam } from '@src/models/domains/Game';
 import styled from 'styled-components';
+import useGameTeams from '@src/hooks/useGameTeams';
 
 type Props = {
-  teamA: GameTeam;
-  teamB: GameTeam;
+  gameId: string;
 };
 
-const TeamChampions: React.FC<Props> = ({ teamA, teamB }) => {
-  const teamAChampions = teamA.players.map(
+const TeamChampions: React.FC<Props> = ({ gameId }) => {
+  const [teams] = useGameTeams(gameId);
+
+  if (teams === null) return <></>;
+
+  const teamAChampions = teams[0].players.map(
     ({ champion, summonerName }, index) => (
       <ChampionWrapper key={index}>
         <ChampionImage src={champion.imageUrl}></ChampionImage>
@@ -17,7 +20,7 @@ const TeamChampions: React.FC<Props> = ({ teamA, teamB }) => {
     ),
   );
 
-  const teamBChampions = teamB.players.map(
+  const teamBChampions = teams[1].players.map(
     ({ champion, summonerName }, index) => (
       <ChampionWrapper key={index}>
         <ChampionImage src={champion.imageUrl}></ChampionImage>

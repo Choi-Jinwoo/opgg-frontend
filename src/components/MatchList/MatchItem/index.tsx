@@ -9,7 +9,6 @@ import WARD_RED_ICON from '@src/assets/images/ward-red-icon.png';
 import WARD_BLUE_ICON from '@src/assets/images/ward-blue-icon.png';
 import TeamChampions from '../TeamChampions';
 import Game from '@src/models/domains/Game';
-import useGameTeams from '@src/hooks/useGameTeams';
 import KDATemplate from '@src/components/template/KDATemplate';
 import KDARateTemplate from '@src/components/template/KDARateTemplate';
 import OPGGURLParser from '@src/lib/OPGGURLParser/OPGGURLParser';
@@ -37,8 +36,6 @@ const ITEM_THEME = {
 };
 
 const MatchItem: React.FC<Props> = ({ game }) => {
-  const [teams] = useGameTeams(game.gameId);
-
   const {
     gameType,
     isWin,
@@ -62,6 +59,8 @@ const MatchItem: React.FC<Props> = ({ game }) => {
     opScoreBadge,
   } = stats.general;
   const { visionWardsBought } = stats.ward;
+
+  console.log('mount');
 
   const itemTheme = ITEM_THEME[isWin ? 'win' : 'lose'];
 
@@ -170,7 +169,7 @@ const MatchItem: React.FC<Props> = ({ game }) => {
         </WardIconWrapper>
       </ItemWrapper>
 
-      {teams && <TeamChampions teamA={teams[0]} teamB={teams[1]} />}
+      <TeamChampions gameId={game.gameId} />
     </Container>
   );
 };
@@ -248,4 +247,4 @@ const Badges = styled.div`
   }
 `;
 
-export default MatchItem;
+export default React.memo(MatchItem);

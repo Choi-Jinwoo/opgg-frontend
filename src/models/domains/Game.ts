@@ -113,12 +113,10 @@ class Game implements KDA {
     return new KDACalculator(kill, death, assist).calculate();
   }
 
-  // TODO: 이름 변경 필요
   get relativeTime(): string {
     return new Time(this.createDate * 1000).getRelativeString(Date.now());
   }
 
-  // TODO: 이름 변경 필요
   get formattedGameLength(): string {
     return new Time(this.gameLength * 1000).format();
   }

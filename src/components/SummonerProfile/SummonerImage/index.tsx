@@ -45,6 +45,7 @@ const BorderImage = styled.div<BorderImageProps>`
 
 const Image = styled.img`
   width: 100px;
+  height: 100px;
 `;
 
 const LevelBadge = styled.span`
