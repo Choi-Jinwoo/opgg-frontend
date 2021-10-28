@@ -14,7 +14,7 @@ class OPGGURLParser {
 
     if (matchResult === null) return '';
 
-    return matchResult[0];
+    return matchResult[0].replace(/\//, '');
   }
 }
 

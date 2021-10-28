@@ -12,6 +12,7 @@ import Game from '@src/models/domains/Game';
 import useGameTeams from '@src/hooks/useGameTeams';
 import KDATemplate from '@src/components/template/KDATemplate';
 import KDARateTemplate from '@src/components/template/KDARateTemplate';
+import OPGGURLParser from '@src/lib/OPGGURLParser/OPGGURLParser';
 
 type Props = {
   game: Game;
@@ -82,27 +83,32 @@ const MatchItem: React.FC<Props> = ({ game }) => {
       </MatchInfo>
 
       <ChampionWrapper>
-        <RoundImage src={champion.imageUrl} alt="챔피언" />
+        <ChampionDetailWrapper>
+          <RoundImage src={champion.imageUrl} alt="챔피언" />
 
-        <SpellWrapper>
-          <RoundSquareImage src={spells[0].imageUrl} alt="스펠" />
-          <RoundSquareImage src={spells[1].imageUrl} alt="스펠" />
-        </SpellWrapper>
+          <SpellWrapper>
+            <RoundSquareImage src={spells[0].imageUrl} alt="스펠" />
+            <RoundSquareImage src={spells[1].imageUrl} alt="스펠" />
+          </SpellWrapper>
 
-        <PeakWrapper>
-          <RoundImage
-            width={22}
-            src={peak[0]}
-            alt="룬"
-            bgColor={theme.colors.black}
-          />
-          <RoundImage
-            width={22}
-            src={peak[1]}
-            alt="룬"
-            bgColor={`${theme.colors.black}10`}
-          />
-        </PeakWrapper>
+          <PeakWrapper>
+            <RoundImage
+              width={22}
+              src={peak[0]}
+              alt="룬"
+              bgColor={theme.colors.black}
+            />
+            <RoundImage
+              width={22}
+              src={peak[1]}
+              alt="룬"
+              bgColor={`${theme.colors.black}10`}
+            />
+          </PeakWrapper>
+        </ChampionDetailWrapper>
+        <Text fontSize={theme.fontSizes.small} color={theme.colors.gray8}>
+          {new OPGGURLParser(champion.imageUrl).parseChampion()}
+        </Text>
       </ChampionWrapper>
 
       <KDAWrapper>
@@ -184,7 +190,13 @@ const MatchInfo = styled(ColumnWrapper)`
   width: 60px;
 `;
 
-const ChampionWrapper = styled.div`
+const ChampionWrapper = styled(ColumnWrapper)`
+  & > * + * {
+    margin-top: 12px;
+  }
+`;
+
+const ChampionDetailWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
