@@ -8,18 +8,26 @@ import useMatches from '@src/hooks/useMatches';
 import useMostInfo from '@src/hooks/useMostInfo';
 import useSummonerName from '@src/hooks/useSummonerName';
 import useSummonerProfile from '@src/hooks/useSummonerProfile';
+import query from '@src/utils/query';
 import { observer } from 'mobx-react';
 import React from 'react';
+import { useLocation } from 'react-router';
 import styled from 'styled-components';
 
 const SummonerPage: React.FC = () => {
+  const { search } = useLocation();
   useSummonerName();
   useSummonerProfile();
   useMatches();
   useMostInfo();
 
+  const summonerName = query.get('summoner', search);
+
   return (
-    <Layout>
+    <Layout
+      title={`${summonerName} | OPGG`}
+      description={`${summonerName}소환사에 대한 정보`}
+    >
       <SummonerProfile />
       <MainContent>
         <SideSection>

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const HomePage: React.FC = () => {
   return (
-    <Layout>
+    <Layout title="OPGG" description="OPGG 프론트엔드 과제">
       <Container>
         <Heading color={theme.colors.azure}>OPGG 프론트엔드 과제</Heading>
         <Text color={theme.colors.gray6}>검색어를 입력해주세요</Text>

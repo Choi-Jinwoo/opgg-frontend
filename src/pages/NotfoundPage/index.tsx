@@ -7,7 +7,10 @@ import styled from 'styled-components';
 
 const NotfoundPage: React.FC = () => {
   return (
-    <Layout>
+    <Layout
+      title="페이지를 찾을 수 없음 | OPGG"
+      description="페이지를 찾을 수 없습니다"
+    >
       <Container>
         <Heading color={theme.colors.azure}>페이지를 찾을 수 없습니다</Heading>
         <Text color={theme.colors.gray6}>다른 페이지로 이동해주세요</Text>
