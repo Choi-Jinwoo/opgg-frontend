@@ -60,8 +60,6 @@ const MatchItem: React.FC<Props> = ({ game }) => {
   } = stats.general;
   const { visionWardsBought } = stats.ward;
 
-  console.log('mount');
-
   const itemTheme = ITEM_THEME[isWin ? 'win' : 'lose'];
 
   return (

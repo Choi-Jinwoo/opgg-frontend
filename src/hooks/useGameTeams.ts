@@ -9,12 +9,18 @@ const useGameTeams = (gameId: string): UseGameTeamsReturns => {
   const [teams, setTeams] = useState<GameTeam[] | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const { summonerName } = summonerStore;
     if (summonerName === null) return;
 
     matchRepository
       .fetchMatchDetails(summonerName, gameId)
-      .then(({ data }) => setTeams(data.teams));
+      .then(({ data }) => isMounted && setTeams(data.teams));
+
+    return () => {
+      isMounted = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameId, summonerStore.summonerName]);
 
