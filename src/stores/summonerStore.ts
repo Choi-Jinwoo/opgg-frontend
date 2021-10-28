@@ -15,6 +15,7 @@ class SummonerStore {
 
   @action
   async fetchSummoner(summonerName: string) {
+    this.summoner = null;
     const { data } = await summonerRepository.fetchSummoner(summonerName);
 
     runInAction(() => {

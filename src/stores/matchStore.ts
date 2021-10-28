@@ -29,6 +29,9 @@ class MatchStore {
 
   @action
   async fetchMatches(summonerName: string) {
+    this.mostChampions = null;
+    this.summonerMatchSummary = null;
+    this.summonerPositions = null;
     const { data } = await matchRepository.fetchMatches(summonerName);
 
     runInAction(() => {

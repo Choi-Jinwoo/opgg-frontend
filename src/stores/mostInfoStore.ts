@@ -16,6 +16,8 @@ class MostInfoStore {
 
   @action
   async fetchMostInfo(summonerName: string) {
+    this.recentChampions = null;
+    this.mostChampions = null;
     const { data } = await mostInfoRepository.fetchMostInfo(summonerName);
 
     runInAction(() => {

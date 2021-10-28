@@ -20,7 +20,6 @@ const RecentSearchList: React.FC<Props> = ({ search }) => {
   };
 
   const makeItemClickHandler: MakeSearchHandler = (keyword) => () => {
-    console.log('pass');
     search(keyword);
   };
 
