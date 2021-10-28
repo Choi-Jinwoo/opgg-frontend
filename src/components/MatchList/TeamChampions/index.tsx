@@ -23,7 +23,10 @@ const TeamChampions: React.FC<Props> = ({ gameId }) => {
   const teamBChampions = teams[1].players.map(
     ({ champion, summonerName }, index) => (
       <ChampionWrapper key={index}>
-        <ChampionImage src={champion.imageUrl}></ChampionImage>
+        <ChampionImage
+          src={champion.imageUrl}
+          alt={summonerName}
+        ></ChampionImage>
         <ChampionName>{summonerName}</ChampionName>
       </ChampionWrapper>
     ),

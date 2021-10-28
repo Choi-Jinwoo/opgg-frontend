@@ -23,7 +23,7 @@ const TierBox: React.FC<Props> = ({
 }) => {
   return (
     <Container>
-      <TierImage src={imageUrl} />
+      <TierImage src={imageUrl} alt={name} />
       <TierInfoWrapper>
         <Text fontSize={theme.fontSizes.tiny} color={theme.colors.gray6}>
           {name}

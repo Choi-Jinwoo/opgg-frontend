@@ -16,7 +16,7 @@ const SummonerImage: React.FC<Props> = ({
   return (
     <Container>
       <BorderImage image={profileBorderImageUrl} />
-      <Image src={profileImageUrl} />
+      <Image src={profileImageUrl} alt="프로필 이미지" />
       <LevelBadge>{level}</LevelBadge>
     </Container>
   );

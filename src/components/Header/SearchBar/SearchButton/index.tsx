@@ -8,8 +8,8 @@ type Props = {
 
 const SearchButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <Button onClick={onClick}>
-      <ButtonImage src={SEARCH_ICON} />
+    <Button onClick={onClick} aria-label="Search Button">
+      <ButtonImage src={SEARCH_ICON} alt="검색 버튼" />
     </Button>
   );
 };

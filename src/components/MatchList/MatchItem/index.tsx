@@ -232,7 +232,9 @@ const WardIconWrapper = styled.div`
   justify-content: center;
 `;
 
-const WardIcon = styled.img`
+const WardIcon = styled.img.attrs({
+  alt: '제어와드',
+})`
   width: 16px;
   height: 16px;
 `;

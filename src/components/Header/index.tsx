@@ -15,6 +15,7 @@ const Header: React.FC = () => {
 const Container = styled.header`
   height: 97px;
   background-color: ${(props) => props.theme.colors.azure};
+  min-width: ${(props) => props.theme.innerSizes.desktop};
 `;
 
 const Inner = styled.div`

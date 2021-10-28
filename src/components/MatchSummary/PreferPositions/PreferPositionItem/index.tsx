@@ -46,7 +46,7 @@ const PreferPositionItem: React.FC<Props> = ({ position, rate }) => {
 
   return (
     <Container>
-      <PositionImage src={image} />
+      <PositionImage src={image} alt={name} />
       <PositionInfoWrapper>
         <Text fontSize={theme.fontSizes.medium}>{name}</Text>
         <RateWrapper>
