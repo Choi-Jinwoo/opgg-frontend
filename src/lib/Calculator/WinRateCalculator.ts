@@ -1,5 +1,8 @@
 import Calculator from './Calculator';
 
+/**
+ * 승률 계산
+ */
 class WinRateCalculator implements Calculator {
   constructor(private wins: number, private games: number) {}
 

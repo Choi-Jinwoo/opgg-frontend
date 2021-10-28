@@ -1,4 +1,4 @@
-import { KDARateColorCondition } from '@src/lib/ConditionalColor/KDARateColorCondition';
+import KDARateColorCondition from '@src/lib/ConditionalColor/KDARateColorCondition';
 import React from 'react';
 import styled from 'styled-components';
 

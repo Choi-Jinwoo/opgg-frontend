@@ -1,6 +1,9 @@
 import theme from '@src/styles/theme';
 import ConditionalColor from './ConditionalColor';
 
+/**
+ * @description 승률에 따른 조건부 색상 조회 라이브러리
+ */
 class WinRateColorCondition implements ConditionalColor<number> {
   value: number;
 

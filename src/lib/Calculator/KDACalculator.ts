@@ -1,5 +1,8 @@
 import Calculator from './Calculator';
 
+/**
+ * KDA 평점 계산
+ */
 class KDACalculator implements Calculator {
   constructor(
     private kills: number,

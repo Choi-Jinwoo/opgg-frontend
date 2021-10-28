@@ -1,7 +1,10 @@
 import theme from '@src/styles/theme';
 import ConditionalColor from './ConditionalColor';
 
-export class KDARateColorCondition implements ConditionalColor<number> {
+/**
+ * @description KDA 평점에 따른 조건부 색상 조회
+ */
+class KDARateColorCondition implements ConditionalColor<number> {
   value: number;
 
   constructor(value: number) {
@@ -17,3 +20,5 @@ export class KDARateColorCondition implements ConditionalColor<number> {
     return theme.colors.black;
   }
 }
+
+export default KDARateColorCondition;
