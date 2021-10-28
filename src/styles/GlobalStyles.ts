@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.colors.black};
     font-size: ${(props) => props.theme.fontSizes.regular};
     background-color: ${(props) => props.theme.colors.gray2};
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   li {
