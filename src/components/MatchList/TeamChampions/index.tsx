@@ -14,7 +14,7 @@ const TeamChampions: React.FC<Props> = ({ gameId }) => {
   const teamAChampions = teams[0].players.map(
     ({ champion, summonerName }, index) => (
       <ChampionWrapper key={index}>
-        <ChampionImage src={champion.imageUrl}></ChampionImage>
+        <ChampionImage src={champion.imageUrl} alt={summonerName} />
         <ChampionName>{summonerName}</ChampionName>
       </ChampionWrapper>
     ),
@@ -23,10 +23,7 @@ const TeamChampions: React.FC<Props> = ({ gameId }) => {
   const teamBChampions = teams[1].players.map(
     ({ champion, summonerName }, index) => (
       <ChampionWrapper key={index}>
-        <ChampionImage
-          src={champion.imageUrl}
-          alt={summonerName}
-        ></ChampionImage>
+        <ChampionImage src={champion.imageUrl} alt={summonerName} />
         <ChampionName>{summonerName}</ChampionName>
       </ChampionWrapper>
     ),
