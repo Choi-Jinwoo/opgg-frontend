@@ -8,7 +8,7 @@ const useSummonerName = (): void => {
   const history = useHistory();
 
   useEffect(() => {
-    summonerStore.summonerName = query.get('summoner', search);
+    summonerStore.changeSummonerName(query.get('summoner', search));
   }, [search]);
 
   useEffect(() => {

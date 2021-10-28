@@ -14,6 +14,11 @@ class SummonerStore {
   }
 
   @action
+  changeSummonerName(summonerName: string | null) {
+    this.summonerName = summonerName;
+  }
+
+  @action
   async fetchSummoner(summonerName: string) {
     this.summoner = null;
     const { data } = await summonerRepository.fetchSummoner(summonerName);
