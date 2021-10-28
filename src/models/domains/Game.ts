@@ -2,6 +2,14 @@ import KDACalculator from '@src/lib/Calculator/KDACalculator';
 import Time from '@src/utils/time';
 import KDA from '../KDA';
 
+export type OPScores = 'ACE' | 'MVP';
+
+export type MultiKillStrings =
+  | 'Double Kill'
+  | 'Triple Kill'
+  | 'Quadra Kill'
+  | 'Penta Kill';
+
 type GeneralStats = {
   kill: number;
   death: number;
@@ -12,8 +20,8 @@ type GeneralStats = {
   contributionForKillRate: string;
   goldEarned: number;
   totalDamageDealtToChampions: number;
-  largestMultiKillString: string;
-  opScoreBadge: string;
+  largestMultiKillString: MultiKillStrings;
+  opScoreBadge: OPScores;
 };
 
 type WardStats = {

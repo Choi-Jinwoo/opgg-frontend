@@ -13,6 +13,7 @@ import useGameTeams from '@src/hooks/useGameTeams';
 import KDATemplate from '@src/components/template/KDATemplate';
 import KDARateTemplate from '@src/components/template/KDARateTemplate';
 import OPGGURLParser from '@src/lib/OPGGURLParser/OPGGURLParser';
+import { MultiKillBadge, OPScoreBadge } from './Badges';
 
 type Props = {
   game: Game;
@@ -50,8 +51,16 @@ const MatchItem: React.FC<Props> = ({ game }) => {
     relativeTime,
     formattedGameLength,
   } = game;
-  const { kill, assist, death, cs, csPerMin, contributionForKillRate } =
-    stats.general;
+  const {
+    kill,
+    assist,
+    death,
+    cs,
+    csPerMin,
+    contributionForKillRate,
+    largestMultiKillString,
+    opScoreBadge,
+  } = stats.general;
   const { visionWardsBought } = stats.ward;
 
   const itemTheme = ITEM_THEME[isWin ? 'win' : 'lose'];
@@ -138,6 +147,13 @@ const MatchItem: React.FC<Props> = ({ game }) => {
         >
           킬관여 {contributionForKillRate}
         </Text>
+
+        <Badges>
+          {largestMultiKillString && (
+            <MultiKillBadge multiKillString={largestMultiKillString} />
+          )}
+          {opScoreBadge && <OPScoreBadge opScore={opScoreBadge} />}
+        </Badges>
       </MatchDetailWrapper>
 
       <ItemWrapper>
@@ -220,6 +236,16 @@ const WardIconWrapper = styled.div`
 const WardIcon = styled.img`
   width: 16px;
   height: 16px;
+`;
+
+const Badges = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > * + * {
+    margin-left: 4px;
+  }
 `;
 
 export default MatchItem;
