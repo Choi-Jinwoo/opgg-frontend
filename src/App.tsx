@@ -5,6 +5,7 @@ import SummonerPage from './pages/SummonerPage';
 import GlobalStyles from './styles/GlobalStyles';
 import theme from './styles/theme';
 import HomePage from './pages/HomePage';
+import NotfoundPage from './pages/NotfoundPage';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/summoner" exact component={SummonerPage} />
+            <Route component={NotfoundPage} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
